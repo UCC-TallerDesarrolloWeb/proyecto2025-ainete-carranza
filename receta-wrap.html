@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- metadatos principales del documento -->
+    <meta charset="UTF-8" />
+    <!-- define la codificación de caracteres -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="ainete & carranza" />
+
+    <!-- descripción del contenido para seo -->
+    <meta
+      name="description"
+      content="paso a paso del wrap veggie crujiente de nutrifit+."
+    />
+
+    <!-- título que aparece en la pestaña del navegador -->
+    <title>receta — wrap veggie crujiente</title>
+
+    <!-- ícono del sitio -->
+    <link rel="icon" href="imagenes/logo.png" type="image/png" />
+
+    <!-- conexiones a google fonts para mejorar la carga -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- fuente principal usada en todo el sitio -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- hoja de estilos principal -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!-- encabezado general con logo y menú de navegación -->
+    <header class="encabezado">
+      <div class="marca">
+        <!-- enlace al inicio con nombre e ícono del sitio -->
+        <a class="enlace-marca" href="index.html">
+          <span class="icono-marca" aria-hidden="true">+</span>
+          <span class="texto-marca">nutrifit+</span>
+        </a>
+      </div>
+
+      <!-- barra de navegación principal -->
+      <nav class="navegacion" aria-label="principal">
+        <!-- botón del menú para pantallas pequeñas -->
+        <button class="boton-menu" id="boton-menu" aria-label="abrir menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <!-- lista de enlaces a las secciones principales -->
+        <ul class="lista-menu" id="lista-menu">
+          <li><a href="index.html">inicio</a></li>
+          <li><a href="calculadoras.html">calculadoras</a></li>
+          <li><a href="habitos.html">hábitos</a></li>
+          <li><a href="recetas.html">recetas</a></li>
+          <li><a href="nosotros.html">nosotros</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- contenido principal de la página -->
+    <main class="contenedor">
+      <!-- artículo que contiene la receta completa -->
+      <article class="detalle-receta">
+        <!-- encabezado con título, descripción e imagen -->
+        <header class="detalle-receta-encabezado">
+          <h1>wrap veggie crujiente</h1>
+          <p>
+            una opción vegetal, liviana y con mucha textura gracias a los
+            garbanzos crocantes y las verduras frescas.
+          </p>
+
+          <!-- datos rápidos sobre tiempo, porciones y tipo de receta -->
+          <div class="datos-receta">
+            <span>15 minutos</span>
+            <span>2 wraps</span>
+            <span>vegetariana</span>
+          </div>
+
+          <!-- imagen principal del plato -->
+          <img
+            class="detalle-receta-imagen"
+            src="imagenes/imagen-wrap-veggie.jpg"
+            alt="wrap vegetariano con vegetales frescos"
+          />
+        </header>
+
+        <!-- sección de ingredientes -->
+        <section>
+          <h2>ingredientes</h2>
+          <ul>
+            <li>2 tortillas integrales medianas</li>
+            <li>1 taza de garbanzos cocidos</li>
+            <li>1/2 zanahoria rallada</li>
+            <li>1/2 taza de hojas verdes</li>
+            <li>2 cucharadas de hummus o queso untable</li>
+            <li>jugo de medio limón, sal y pimienta</li>
+          </ul>
+        </section>
+
+        <!-- sección con las instrucciones paso a paso -->
+        <section>
+          <h2>paso a paso</h2>
+          <ol class="lista-pasos">
+            <li class="paso-receta">
+              <strong>1.</strong> dorá los garbanzos en sartén con una pizca de
+              sal hasta que queden crujientes.
+            </li>
+            <li class="paso-receta">
+              <strong>2.</strong> untá cada tortilla con hummus y agregá hojas
+              verdes y zanahoria.
+            </li>
+            <li class="paso-receta">
+              <strong>3.</strong> sumá los garbanzos crujientes y rociá con unas
+              gotas de limón.
+            </li>
+            <li class="paso-receta">
+              <strong>4.</strong> enrollá firme el wrap, cortalo al medio y
+              serví.
+            </li>
+          </ol>
+        </section>
+
+        <!-- botón para regresar al listado general de recetas -->
+        <a class="boton boton-contorno" href="recetas.html">
+          ← volver a recetas
+        </a>
+      </article>
+    </main>
+
+    <!-- pie de página con créditos y enlaces -->
+    <footer class="pie">
+      <div class="pie-contenido">
+        <p>
+          &copy; 2025 nutrifit+. recetas caseras: ajustá condimentos a tu gusto.
+        </p>
+        <div class="pie-enlaces">
+          <a href="recetas.html">recetas</a>
+          <span class="separador" aria-hidden="true">·</span>
+          <a href="index.html">inicio</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- script principal del sitio -->
+    <script src="js/main.js"></script>
+  </body>
+</html>

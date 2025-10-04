@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- metadatos principales del documento -->
+    <meta charset="UTF-8" />
+    <!-- define la codificación de caracteres -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="ainete & carranza" />
+
+    <!-- descripción del contenido para seo -->
+    <meta
+      name="description"
+      content="paso a paso del desayuno proteico de nutrifit+."
+    />
+
+    <!-- título de la pestaña del navegador -->
+    <title>receta — desayuno proteico</title>
+
+    <!-- ícono del sitio -->
+    <link rel="icon" href="imagenes/logo.png" type="image/png" />
+
+    <!-- conexiones a google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- tipografía principal -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- hoja de estilos principal -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!-- encabezado general con logo y navegación -->
+    <header class="encabezado">
+      <div class="marca">
+        <!-- enlace al inicio con el logo y nombre del sitio -->
+        <a class="enlace-marca" href="index.html">
+          <span class="icono-marca" aria-hidden="true">+</span>
+          <span class="texto-marca">nutrifit+</span>
+        </a>
+      </div>
+
+      <!-- menú principal de navegación -->
+      <nav class="navegacion" aria-label="principal">
+        <!-- botón de menú para pantallas pequeñas -->
+        <button class="boton-menu" id="boton-menu" aria-label="abrir menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <!-- lista de enlaces de navegación -->
+        <ul class="lista-menu" id="lista-menu">
+          <li><a href="index.html">inicio</a></li>
+          <li><a href="calculadoras.html">calculadoras</a></li>
+          <li><a href="habitos.html">hábitos</a></li>
+          <li><a href="recetas.html">recetas</a></li>
+          <li><a href="nosotros.html">nosotros</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- contenido principal del documento -->
+    <main class="contenedor">
+      <!-- artículo con la receta detallada -->
+      <article class="detalle-receta">
+        <!-- encabezado de la receta con imagen y datos -->
+        <header class="detalle-receta-encabezado">
+          <h1>desayuno proteico</h1>
+          <p>
+            tostadas integrales con huevo y palta, un combo equilibrado para
+            arrancar el día con energía y saciedad.
+          </p>
+
+          <!-- información breve sobre tiempo, porciones y tipo -->
+          <div class="datos-receta">
+            <span>12 minutos</span>
+            <span>1 porción</span>
+            <span>proteico &amp; económico</span>
+          </div>
+
+          <!-- imagen principal del plato -->
+          <img
+            class="detalle-receta-imagen"
+            src="imagenes/imagen-desayuno-proteico.jpg"
+            alt="tostadas integrales con huevo y palta"
+          />
+        </header>
+
+        <!-- sección con los ingredientes -->
+        <section>
+          <h2>ingredientes</h2>
+          <ul>
+            <li>2 rebanadas de pan integral</li>
+            <li>1 palta pequeña</li>
+            <li>1 huevo</li>
+            <li>semillas de sésamo o chía</li>
+            <li>sal, pimienta y gotas de limón</li>
+          </ul>
+        </section>
+
+        <!-- sección con los pasos de preparación -->
+        <section>
+          <h2>paso a paso</h2>
+          <ol class="lista-pasos">
+            <li class="paso-receta">
+              <strong>1.</strong> tostá las rebanadas de pan hasta que queden
+              bien crujientes.
+            </li>
+            <li class="paso-receta">
+              <strong>2.</strong> aplastá la palta con un toque de limón, sal y
+              pimienta y untala sobre el pan.
+            </li>
+            <li class="paso-receta">
+              <strong>3.</strong> cociná el huevo a la plancha o pochá y
+              colocalo encima de las tostadas.
+            </li>
+            <li class="paso-receta">
+              <strong>4.</strong> sumá semillas para aportar textura y serví
+              inmediatamente.
+            </li>
+          </ol>
+        </section>
+
+        <!-- botón para volver al listado general de recetas -->
+        <a class="boton boton-contorno" href="recetas.html">
+          ← volver a recetas
+        </a>
+      </article>
+    </main>
+
+    <!-- pie de página con créditos y enlaces -->
+    <footer class="pie">
+      <div class="pie-contenido">
+        <p>
+          &copy; 2025 nutrifit+. recetas caseras: ajustá condimentos a tu gusto.
+        </p>
+        <div class="pie-enlaces">
+          <a href="recetas.html">recetas</a>
+          <span class="separador" aria-hidden="true">·</span>
+          <a href="index.html">inicio</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- script principal del sitio -->
+    <script src="js/main.js"></script>
+  </body>
+</html>

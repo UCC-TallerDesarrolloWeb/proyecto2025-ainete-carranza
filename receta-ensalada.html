@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- metadatos principales del documento -->
+    <meta charset="UTF-8" />
+    <!-- define la codificación de caracteres -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="ainete & carranza" />
+
+    <!-- descripción del contenido para seo -->
+    <meta
+      name="description"
+      content="paso a paso de la ensalada verde express de nutrifit+."
+    />
+
+    <!-- título de la pestaña -->
+    <title>receta — ensalada verde express</title>
+
+    <!-- ícono del sitio -->
+    <link rel="icon" href="imagenes/logo.png" type="image/png" />
+
+    <!-- conexiones a google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- tipografía principal -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- hoja de estilos principal -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!-- encabezado general con logo y navegación -->
+    <header class="encabezado">
+      <div class="marca">
+        <!-- enlace al inicio con el nombre y el ícono del sitio -->
+        <a class="enlace-marca" href="index.html">
+          <span class="icono-marca" aria-hidden="true">+</span>
+          <span class="texto-marca">nutrifit+</span>
+        </a>
+      </div>
+
+      <!-- menú principal de navegación -->
+      <nav class="navegacion" aria-label="principal">
+        <!-- botón de menú para pantallas pequeñas -->
+        <button class="boton-menu" id="boton-menu" aria-label="abrir menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <!-- lista de enlaces del menú principal -->
+        <ul class="lista-menu" id="lista-menu">
+          <li><a href="index.html">inicio</a></li>
+          <li><a href="calculadoras.html">calculadoras</a></li>
+          <li><a href="habitos.html">hábitos</a></li>
+          <li><a href="recetas.html">recetas</a></li>
+          <li><a href="nosotros.html">nosotros</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- contenido principal -->
+    <main class="contenedor">
+      <!-- artículo que contiene la receta completa -->
+      <article class="detalle-receta">
+        <!-- encabezado de la receta con título, descripción y datos -->
+        <header class="detalle-receta-encabezado">
+          <h1>ensalada verde express</h1>
+          <p>
+            ideal para almuerzos ligeros o cenas rápidas. lista en menos de 10
+            minutos con ingredientes frescos y crocantes.
+          </p>
+
+          <!-- datos rápidos sobre la receta -->
+          <div class="datos-receta">
+            <span>10 minutos</span>
+            <span>2 porciones</span>
+            <span>rápida &amp; económica</span>
+          </div>
+
+          <!-- imagen principal del plato -->
+          <img
+            class="detalle-receta-imagen"
+            src="imagenes/image-ensalada.jpg"
+            alt="bowl de ensalada verde con hojas, semillas y vinagreta"
+          />
+        </header>
+
+        <!-- sección con los ingredientes -->
+        <section>
+          <h2>ingredientes</h2>
+          <ul>
+            <li>2 tazas de hojas verdes (espinaca, rúcula, lechuga)</li>
+            <li>1/2 pepino en rodajas finas</li>
+            <li>1/2 palta en cubos</li>
+            <li>2 cucharadas de semillas (chía, girasol, sésamo)</li>
+            <li>1 cucharada de aceite de oliva</li>
+            <li>jugo de medio limón</li>
+            <li>sal y pimienta a gusto</li>
+          </ul>
+        </section>
+
+        <!-- sección con el paso a paso de la receta -->
+        <section>
+          <h2>paso a paso</h2>
+          <ol class="lista-pasos">
+            <li class="paso-receta">
+              <strong>1.</strong> lavá y secá las hojas verdes. colocalas en un
+              bowl amplio.
+            </li>
+            <li class="paso-receta">
+              <strong>2.</strong> sumá el pepino y la palta cortados. mezclá con
+              movimientos suaves.
+            </li>
+            <li class="paso-receta">
+              <strong>3.</strong> prepará la vinagreta mezclando aceite, jugo de
+              limón, sal y pimienta.
+            </li>
+            <li class="paso-receta">
+              <strong>4.</strong> verté la vinagreta sobre la ensalada y
+              espolvoreá las semillas antes de servir.
+            </li>
+          </ol>
+        </section>
+
+        <!-- botón para regresar al listado de recetas -->
+        <a class="boton boton-contorno" href="recetas.html">
+          ← volver a recetas
+        </a>
+      </article>
+    </main>
+
+    <!-- pie de página con créditos y enlaces -->
+    <footer class="pie">
+      <div class="pie-contenido">
+        <p>
+          &copy; 2025 nutrifit+. recetas caseras: ajustá condimentos a tu gusto.
+        </p>
+        <div class="pie-enlaces">
+          <a href="recetas.html">recetas</a>
+          <span class="separador" aria-hidden="true">·</span>
+          <a href="index.html">inicio</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- script principal del sitio -->
+    <script src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- metadatos principales del documento -->
+    <meta charset="UTF-8" />
+    <!-- corrige los caracteres especiales -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="ainete & carranza" />
+
+    <!-- descripción y palabras clave para seo -->
+    <meta
+      name="description"
+      content="lista editable de hábitos saludables de nutrifit+ con guardado local y recordatorios básicos."
+    />
+    <meta
+      name="keywords"
+      content="hábitos saludables, seguimiento, nutrición"
+    />
+
+    <!-- título de la pestaña -->
+    <title>hábitos - nutrifit+</title>
+
+    <!-- ícono del sitio -->
+    <link rel="icon" href="imagenes/logo.png" type="image/png" />
+
+    <!-- conexiones a google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- tipografía principal -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- hoja de estilos -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!-- encabezado principal con marca y menú -->
+    <header class="encabezado">
+      <div class="marca">
+        <!-- enlace a la página de inicio -->
+        <a class="enlace-marca" href="index.html">
+          <span class="icono-marca" aria-hidden="true">+</span>
+          <span class="texto-marca">nutrifit+</span>
+        </a>
+      </div>
+
+      <!-- botón para cambiar tema (oscuro/claro) -->
+      <button aria-label="cambiar tema"></button>
+
+      <!-- navegación principal -->
+      <nav class="navegacion" aria-label="principal">
+        <button class="boton-menu" id="boton-menu" aria-label="abrir menú">
+          <!-- tres líneas del menú hamburguesa -->
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <!-- lista de enlaces de navegación -->
+        <ul class="lista-menu" id="lista-menu">
+          <li><a href="index.html">inicio</a></li>
+          <li><a href="calculadoras.html">calculadoras</a></li>
+          <li><a href="habitos.html">hábitos</a></li>
+          <li><a href="recetas.html">recetas</a></li>
+          <li><a href="nosotros.html">nosotros</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- contenido principal -->
+    <main class="contenedor" id="pagina-habitos">
+      <!-- encabezado de la sección de hábitos -->
+      <header class="encabezado-seccion">
+        <h1>mis hábitos diarios</h1>
+        <p class="texto-destacado">
+          seleccioná lo que cumpliste hoy, sumá hábitos personalizados y guardá
+          tu progreso.
+        </p>
+      </header>
+
+      <!-- panel principal con el checklist -->
+      <section class="panel-habitos" aria-labelledby="titulo-lista-habitos">
+        <h2 id="titulo-lista-habitos">checklist saludable</h2>
+
+        <!-- formulario para agregar y guardar hábitos -->
+        <form
+          id="formulario-habitos"
+          class="formulario-habitos"
+          aria-describedby="estado-habitos"
+        >
+          <!-- lista dinámica donde se mostrarán los hábitos -->
+          <ul class="lista-habitos" id="lista-habitos"></ul>
+
+          <!-- sección de acciones del usuario -->
+          <div class="acciones-habitos">
+            <label class="solo-lectores" for="entrada-habito"
+              >agregar hábito</label
+            >
+            <input
+              id="entrada-habito"
+              name="nuevoHabito"
+              type="text"
+              placeholder="escribí un hábito nuevo"
+              maxlength="60"
+            />
+            <button
+              class="boton boton-contorno"
+              type="button"
+              id="boton-agregar-habito"
+            >
+              agregar
+            </button>
+          </div>
+
+          <!-- botón para guardar el progreso -->
+          <button class="boton boton-principal" type="submit">
+            guardar progreso
+          </button>
+        </form>
+
+        <!-- estado en vivo de los hábitos -->
+        <p id="estado-habitos" class="estado-habitos" aria-live="polite"></p>
+
+        <!-- texto con la fecha de la última actualización -->
+        <p class="texto-fecha-habitos">
+          última actualización: <span id="fecha-habitos">-</span>
+        </p>
+      </section>
+    </main>
+
+    <!-- pie de página -->
+    <footer class="pie">
+      <div class="pie-contenido">
+        <p>
+          &copy; 2025 nutrifit+. registramos tus hábitos solo en tu navegador.
+        </p>
+        <div class="pie-enlaces">
+          <a href="recetas.html">recetas</a>
+          <span class="separador" aria-hidden="true">|</span>
+          <a href="nosotros.html">contacto</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- scripts del sitio -->
+    <script src="js/main.js"></script>
+    <script src="js/habitos.js"></script>
+  </body>
+</html>

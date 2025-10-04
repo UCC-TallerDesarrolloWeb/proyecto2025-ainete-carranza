@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- metadatos principales del documento -->
+    <meta charset="UTF-8" />
+    <!-- define la codificación de caracteres -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="ainete & carranza" />
+
+    <!-- descripción del contenido para seo -->
+    <meta
+      name="description"
+      content="paso a paso del power bowl proteico de nutrifit+."
+    />
+
+    <!-- título de la pestaña -->
+    <title>receta — power bowl proteico</title>
+
+    <!-- ícono del sitio -->
+    <link rel="icon" href="imagenes/logo.png" type="image/png" />
+
+    <!-- conexiones a google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- tipografía principal -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- hoja de estilos principal -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!-- encabezado del sitio con logo y navegación principal -->
+    <header class="encabezado">
+      <div class="marca">
+        <!-- enlace al inicio con el nombre y símbolo del sitio -->
+        <a class="enlace-marca" href="index.html">
+          <span class="icono-marca" aria-hidden="true">+</span>
+          <span class="texto-marca">nutrifit+</span>
+        </a>
+      </div>
+
+      <!-- menú principal del sitio -->
+      <nav class="navegacion" aria-label="principal">
+        <!-- botón de menú para pantallas móviles -->
+        <button class="boton-menu" id="boton-menu" aria-label="abrir menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <!-- lista de enlaces de navegación -->
+        <ul class="lista-menu" id="lista-menu">
+          <li><a href="index.html">inicio</a></li>
+          <li><a href="calculadoras.html">calculadoras</a></li>
+          <li><a href="habitos.html">hábitos</a></li>
+          <li><a href="recetas.html">recetas</a></li>
+          <li><a href="nosotros.html">nosotros</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- contenido principal de la página -->
+    <main class="contenedor">
+      <!-- artículo con la información detallada de la receta -->
+      <article class="detalle-receta">
+        <!-- encabezado del artículo con título, descripción y datos rápidos -->
+        <header class="detalle-receta-encabezado">
+          <h1>power bowl proteico</h1>
+          <p>
+            un bowl completo con proteínas, carbohidratos y grasas saludables.
+            perfecto después de entrenar o para un almuerzo consistente.
+          </p>
+
+          <!-- datos breves sobre duración, porciones y tipo de receta -->
+          <div class="datos-receta">
+            <span>25 minutos</span>
+            <span>2 porciones</span>
+            <span>proteico</span>
+          </div>
+
+          <!-- imagen principal del plato -->
+          <img
+            class="detalle-receta-imagen"
+            src="imagenes/imagen-bowl-proteico.jpg"
+            alt="bowl con pollo grillado, quinoa y vegetales"
+          />
+        </header>
+
+        <!-- sección con los ingredientes -->
+        <section>
+          <h2>ingredientes</h2>
+          <ul>
+            <li>1 pechuga de pollo grillada en tiras</li>
+            <li>1 taza de quinoa cocida</li>
+            <li>1 taza de vegetales asados (zapallo, zanahoria, brócoli)</li>
+            <li>1/2 palta en láminas</li>
+            <li>2 cucharadas de hummus o yogur natural</li>
+            <li>semillas a gusto</li>
+            <li>sal, pimienta y aceite de oliva</li>
+          </ul>
+        </section>
+
+        <!-- sección con el paso a paso de preparación -->
+        <section>
+          <h2>paso a paso</h2>
+          <ol class="lista-pasos">
+            <li class="paso-receta">
+              <strong>1.</strong> cociná la quinoa según el paquete y dejala
+              entibiar.
+            </li>
+            <li class="paso-receta">
+              <strong>2.</strong> grillá la pechuga condimentada con sal,
+              pimienta y aceite de oliva.
+            </li>
+            <li class="paso-receta">
+              <strong>3.</strong> colocá la quinoa como base del bowl, sumá los
+              vegetales asados y la palta.
+            </li>
+            <li class="paso-receta">
+              <strong>4.</strong> incorporá el pollo en tiras, coroná con hummus
+              o yogur y espolvoreá semillas.
+            </li>
+          </ol>
+        </section>
+
+        <!-- botón para regresar al listado de recetas -->
+        <a class="boton boton-contorno" href="recetas.html">
+          ← volver a recetas
+        </a>
+      </article>
+    </main>
+
+    <!-- pie de página con créditos y enlaces -->
+    <footer class="pie">
+      <div class="pie-contenido">
+        <p>
+          &copy; 2025 nutrifit+. recetas caseras: ajustá condimentos a tu gusto.
+        </p>
+        <div class="pie-enlaces">
+          <a href="recetas.html">recetas</a>
+          <span class="separador" aria-hidden="true">·</span>
+          <a href="index.html">inicio</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- script principal del sitio -->
+    <script src="js/main.js"></script>
+  </body>
+</html>

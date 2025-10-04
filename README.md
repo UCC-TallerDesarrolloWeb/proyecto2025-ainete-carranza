@@ -3,6 +3,28 @@ Estructura de Proyecto Taller de Desarrollo Web - 2025
 
 ## Requisitos del Primer Parcial
 
+## Índice
+1. [Ficha del proyecto](#ficha-del-proyecto)
+2. [Requisitos del Primer Parcial](#requisitos-del-primer-parcial)
+   - [Sobre el Sketch](#sobre-el-sketch)
+   - [Sobre el Wireframe/Mockup](#sobre-el-wireframemockup)
+   - [Sobre el Repositorio](#sobre-el-repositorio)
+   - [Sobre el Proyecto General](#sobre-el-proyecto-general)
+   - [Sobre el HTML](#sobre-el-html)
+   - [Sobre las imágenes](#sobre-las-imágenes)
+   - [Sobre el CSS](#sobre-el-css)
+   - [Sobre Accesibilidad](#sobre-accesibilidad)
+   - [Sobre la funcionalidad JavaScript](#sobre-la-funcionalidad-javascript)
+   - [Sobre la documentación](#sobre-la-documentación)
+   - [Testing](#testing)
+   - [Sobre las correcciones](#sobre-las-correcciones)
+3. [Requisitos del Segundo Parcial](#requisitos-del-segundo-parcial)
+   - [Sobre React](#sobre-react)
+   - [Sobre las Correcciones](#sobre-las-correcciones-1)
+4. [Requisitos del Final](#requisitos-del-final)
+
+
+
 ### Sobre el Sketch
 - [ ] Versión Desktop y Mobile
 - [ ] Guardado en formato PNG, JPG ó PDF

@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- metadatos principales del documento -->
+    <meta charset="UTF-8" />
+    <!-- define la codificación de caracteres -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="ainete & carranza" />
+
+    <!-- descripción de la página para seo -->
+    <meta
+      name="description"
+      content="paso a paso del batido energético de nutrifit+."
+    />
+
+    <!-- título de la pestaña -->
+    <title>receta — batido energético</title>
+
+    <!-- ícono del sitio -->
+    <link rel="icon" href="imagenes/logo.png" type="image/png" />
+
+    <!-- conexiones a google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- tipografía principal -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- hoja de estilos principal -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!-- encabezado general del sitio -->
+    <header class="encabezado">
+      <div class="marca">
+        <!-- enlace al inicio con el logo y nombre del sitio -->
+        <a class="enlace-marca" href="index.html">
+          <span class="icono-marca" aria-hidden="true">+</span>
+          <span class="texto-marca">nutrifit+</span>
+        </a>
+      </div>
+
+      <!-- menú principal de navegación -->
+      <nav class="navegacion" aria-label="principal">
+        <!-- botón de menú para versión móvil -->
+        <button class="boton-menu" id="boton-menu" aria-label="abrir menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <!-- lista de enlaces del menú -->
+        <ul class="lista-menu" id="lista-menu">
+          <li><a href="index.html">inicio</a></li>
+          <li><a href="calculadoras.html">calculadoras</a></li>
+          <li><a href="habitos.html">hábitos</a></li>
+          <li><a href="recetas.html">recetas</a></li>
+          <li><a href="nosotros.html">nosotros</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- contenido principal del documento -->
+    <main class="contenedor">
+      <!-- artículo principal que contiene la receta -->
+      <article class="detalle-receta">
+        <!-- encabezado con título, descripción y datos básicos -->
+        <header class="detalle-receta-encabezado">
+          <h1>batido energético</h1>
+          <p>
+            un licuado cremoso con carbohidratos y antioxidantes para arrancar
+            el día con energía o recuperar después de entrenar.
+          </p>
+
+          <!-- información breve sobre duración, porciones y dificultad -->
+          <div class="datos-receta">
+            <span>5 minutos</span>
+            <span>1 porción grande</span>
+            <span>rápida</span>
+          </div>
+
+          <!-- imagen principal de la receta -->
+          <img
+            class="detalle-receta-imagen"
+            src="imagenes/imagen-batido-energetico.jpg"
+            alt="batido de frutos rojos en vaso de vidrio"
+          />
+        </header>
+
+        <!-- sección con la lista de ingredientes -->
+        <section>
+          <h2>ingredientes</h2>
+          <ul>
+            <li>1 banana madura</li>
+            <li>1 taza de frutos rojos congelados</li>
+            <li>2 cucharadas de avena instantánea</li>
+            <li>200 ml de leche vegetal o descremada</li>
+            <li>1 cucharadita de miel o edulcorante (opcional)</li>
+            <li>hielo a gusto</li>
+          </ul>
+        </section>
+
+        <!-- sección con el procedimiento paso a paso -->
+        <section>
+          <h2>paso a paso</h2>
+          <ol class="lista-pasos">
+            <li class="paso-receta">
+              <strong>1.</strong> colocá todos los ingredientes en la licuadora.
+            </li>
+            <li class="paso-receta">
+              <strong>2.</strong> licuá a velocidad alta durante 45 segundos
+              hasta lograr una textura cremosa.
+            </li>
+            <li class="paso-receta">
+              <strong>3.</strong> ajustá el dulzor con miel o edulcorante si lo
+              preferís.
+            </li>
+            <li class="paso-receta">
+              <strong>4.</strong> serví inmediatamente y decorá con semillas o
+              frutos enteros.
+            </li>
+          </ol>
+        </section>
+
+        <!-- botón para regresar al listado general de recetas -->
+        <a class="boton boton-contorno" href="recetas.html">
+          ← volver a recetas
+        </a>
+      </article>
+    </main>
+
+    <!-- pie de página con créditos y enlaces -->
+    <footer class="pie">
+      <div class="pie-contenido">
+        <p>
+          &copy; 2025 nutrifit+. recetas caseras: ajustá condimentos a tu gusto.
+        </p>
+        <div class="pie-enlaces">
+          <a href="recetas.html">recetas</a>
+          <span class="separador" aria-hidden="true">·</span>
+          <a href="index.html">inicio</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- script principal del sitio -->
+    <script src="js/main.js"></script>
+  </body>
+</html>

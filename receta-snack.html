@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- metadatos principales del documento -->
+    <meta charset="UTF-8" />
+    <!-- define la codificación de caracteres -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="ainete & carranza" />
+
+    <!-- descripción del contenido para seo -->
+    <meta
+      name="description"
+      content="paso a paso del snack crocante de nutrifit+."
+    />
+
+    <!-- título que aparece en la pestaña del navegador -->
+    <title>receta — snack crocante</title>
+
+    <!-- ícono del sitio que se muestra en la pestaña -->
+    <link rel="icon" href="imagenes/logo.png" type="image/png" />
+
+    <!-- conexiones previas a google fonts para optimizar carga -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- fuente principal del sitio -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- hoja de estilos principal -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!-- encabezado principal del sitio -->
+    <header class="encabezado">
+      <div class="marca">
+        <!-- logo y enlace a la página de inicio -->
+        <a class="enlace-marca" href="index.html">
+          <span class="icono-marca" aria-hidden="true">+</span>
+          <span class="texto-marca">nutrifit+</span>
+        </a>
+      </div>
+
+      <!-- barra de navegación principal -->
+      <nav class="navegacion" aria-label="principal">
+        <!-- botón de menú para versión móvil -->
+        <button class="boton-menu" id="boton-menu" aria-label="abrir menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <!-- lista de enlaces de navegación -->
+        <ul class="lista-menu" id="lista-menu">
+          <li><a href="index.html">inicio</a></li>
+          <li><a href="calculadoras.html">calculadoras</a></li>
+          <li><a href="habitos.html">hábitos</a></li>
+          <li><a href="recetas.html">recetas</a></li>
+          <li><a href="nosotros.html">nosotros</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- contenido principal del documento -->
+    <main class="contenedor">
+      <!-- artículo con la receta completa -->
+      <article class="detalle-receta">
+        <!-- encabezado con título, descripción e imagen -->
+        <header class="detalle-receta-encabezado">
+          <h1>snack crocante</h1>
+          <p>
+            una mezcla horneada de frutos secos y garbanzos especiados. ideal
+            para llevar en un frasco y tener energía entre comidas.
+          </p>
+
+          <!-- datos resumidos sobre tiempo, porciones y tipo -->
+          <div class="datos-receta">
+            <span>30 minutos</span>
+            <span>4 porciones</span>
+            <span>proteico &amp; rápido</span>
+          </div>
+
+          <!-- imagen ilustrativa del snack -->
+          <img
+            class="detalle-receta-imagen"
+            src="imagenes/imagen-snack-crocante.jpg"
+            alt="frutos secos y garbanzos especiados en frasco"
+          />
+        </header>
+
+        <!-- sección de ingredientes -->
+        <section>
+          <h2>ingredientes</h2>
+          <ul>
+            <li>1 taza de garbanzos cocidos y secos</li>
+            <li>1/2 taza de almendras</li>
+            <li>1/2 taza de nueces</li>
+            <li>1 cucharada de aceite de oliva</li>
+            <li>1 cucharadita de pimentón dulce</li>
+            <li>1/2 cucharadita de comino y sal</li>
+          </ul>
+        </section>
+
+        <!-- sección con los pasos para preparar la receta -->
+        <section>
+          <h2>paso a paso</h2>
+          <ol class="lista-pasos">
+            <li class="paso-receta">
+              <strong>1.</strong> mezclá los garbanzos y frutos secos con el
+              aceite y los condimentos.
+            </li>
+            <li class="paso-receta">
+              <strong>2.</strong> distribuí en una placa y horneá a 180 °c
+              durante 20 minutos, revolviendo a mitad de cocción.
+            </li>
+            <li class="paso-receta">
+              <strong>3.</strong> dejá enfriar por completo para que queden bien
+              crocantes.
+            </li>
+            <li class="paso-receta">
+              <strong>4.</strong> guardá en frascos herméticos y consumí dentro
+              de la semana.
+            </li>
+          </ol>
+        </section>
+
+        <!-- botón para volver al listado general de recetas -->
+        <a class="boton boton-contorno" href="recetas.html">
+          ← volver a recetas
+        </a>
+      </article>
+    </main>
+
+    <!-- pie de página con créditos y enlaces -->
+    <footer class="pie">
+      <div class="pie-contenido">
+        <p>
+          &copy; 2025 nutrifit+. recetas caseras: ajustá condimentos a tu gusto.
+        </p>
+        <div class="pie-enlaces">
+          <a href="recetas.html">recetas</a>
+          <span class="separador" aria-hidden="true">·</span>
+          <a href="index.html">inicio</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- script principal del sitio -->
+    <script src="js/main.js"></script>
+  </body>
+</html>

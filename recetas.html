@@ -1,0 +1,240 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- metadatos principales del documento -->
+    <meta charset="UTF-8" />
+    <!-- define la codificación para acentos y eñes -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="ainete & carranza" />
+
+    <!-- descripción y palabras clave para seo (corrección de caracteres) -->
+    <meta
+      name="description"
+      content="recetas saludables de nutrifit+ con filtros por categoría y fotos propias."
+    />
+    <meta
+      name="keywords"
+      content="recetas saludables, cocina fácil, comidas proteicas"
+    />
+
+    <!-- título de la pestaña -->
+    <title>recetas - nutrifit+</title>
+
+    <!-- ícono del sitio -->
+    <link rel="icon" href="imagenes/logo.png" type="image/png" />
+
+    <!-- conexiones previas para optimizar google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- tipografía principal -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- hoja de estilos del sitio -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!-- encabezado con marca y navegación -->
+    <header class="encabezado">
+      <div class="marca">
+        <!-- enlace al inicio con el símbolo de la marca -->
+        <a class="enlace-marca" href="index.html">
+          <span class="icono-marca" aria-hidden="true">+</span>
+          <span class="texto-marca">nutrifit+</span>
+        </a>
+      </div>
+
+      <!-- menú principal de navegación -->
+      <nav class="navegacion" aria-label="principal">
+        <!-- botón tipo hamburguesa para móviles -->
+        <button class="boton-menu" id="boton-menu" aria-label="abrir menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <!-- lista de secciones del sitio -->
+        <ul class="lista-menu" id="lista-menu">
+          <li><a href="index.html">inicio</a></li>
+          <li><a href="calculadoras.html">calculadoras</a></li>
+          <li><a href="habitos.html">hábitos</a></li>
+          <li><a href="recetas.html">recetas</a></li>
+          <li><a href="nosotros.html">nosotros</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- contenido principal -->
+    <main class="contenedor" id="pagina-recetas">
+      <!-- encabezado de la página de recetas -->
+      <header class="encabezado-seccion">
+        <h1>recetas que inspiran</h1>
+        <p class="texto-destacado">
+          elegimos preparaciones simples para cualquier día. filtrá por lo que
+          necesites y combiná ingredientes de tu cocina.
+        </p>
+      </header>
+
+      <!-- barra de búsqueda y filtros -->
+      <div class="barra-recetas">
+        <!-- etiqueta solo para lectores de pantalla -->
+        <label class="solo-lectores" for="buscador-recetas"
+          >buscar receta</label
+        >
+
+        <!-- campo de búsqueda por nombre -->
+        <input
+          id="buscador-recetas"
+          class="buscador-recetas"
+          type="search"
+          placeholder="buscar receta..."
+          aria-label="buscar receta por nombre"
+        />
+
+        <!-- grupo de filtros por categoría (ojo: los data-* del js usan valores sin acento) -->
+        <div class="barra-filtros" role="group" aria-label="filtrar recetas">
+          <button class="boton boton-filtro estado-activo" data-filtro="todos">
+            todas
+          </button>
+          <button class="boton boton-filtro" data-filtro="rapidas">
+            rápidas
+          </button>
+          <button class="boton boton-filtro" data-filtro="economicas">
+            económicas
+          </button>
+          <button class="boton boton-filtro" data-filtro="proteicas">
+            proteicas
+          </button>
+        </div>
+      </div>
+
+      <!-- listado de tarjetas de recetas -->
+      <section class="rejilla-recetas" aria-labelledby="titulo-lista-recetas">
+        <h2 id="titulo-lista-recetas" class="solo-lectores">
+          listado de recetas
+        </h2>
+
+        <!-- tarjeta: ensalada verde express -->
+        <article
+          class="tarjeta-receta"
+          data-categorias="rapidas economicas"
+          data-nombre="ensalada verde express"
+        >
+          <img
+            src="imagenes/image-ensalada.jpg"
+            alt="bowl de ensalada fresca con hojas verdes"
+          />
+          <h3>ensalada verde express</h3>
+          <p>lista en 10 minutos con hojas, semillas y vinagreta cítrica.</p>
+          <a class="boton boton-contorno" href="receta-ensalada.html"
+            >ver receta</a
+          >
+        </article>
+
+        <!-- tarjeta: power bowl proteico -->
+        <article
+          class="tarjeta-receta"
+          data-categorias="proteicas"
+          data-nombre="power bowl proteico"
+        >
+          <img
+            src="imagenes/imagen-bowl-proteico.jpg"
+            alt="plato proteico con pollo grillado y quinoa"
+          />
+          <h3>power bowl proteico</h3>
+          <p>pollo grillado, quinoa y vegetales asados con limón.</p>
+          <a class="boton boton-contorno" href="receta-power-bowl.html"
+            >ver receta</a
+          >
+        </article>
+
+        <!-- tarjeta: batido energético -->
+        <article
+          class="tarjeta-receta"
+          data-categorias="rapidas"
+          data-nombre="batido energético"
+        >
+          <img
+            src="imagenes/imagen-batido-energetico.jpg"
+            alt="vaso de batido energético con frutos rojos"
+          />
+          <h3>batido energético</h3>
+          <p>banana, frutos rojos y avena listo para llevar.</p>
+          <a class="boton boton-contorno" href="receta-batido.html"
+            >ver receta</a
+          >
+        </article>
+
+        <!-- tarjeta: wrap veggie crujiente -->
+        <article
+          class="tarjeta-receta"
+          data-categorias="economicas"
+          data-nombre="wrap veggie crujiente"
+        >
+          <img
+            src="imagenes/imagen-wrap-veggie.jpg"
+            alt="wrap vegetariano con vegetales frescos"
+          />
+          <h3>wrap veggie crujiente</h3>
+          <p>garbanzos, zanahoria y hummus en tortilla integral.</p>
+          <a class="boton boton-contorno" href="receta-wrap.html">ver receta</a>
+        </article>
+
+        <!-- tarjeta: desayuno proteico -->
+        <article
+          class="tarjeta-receta"
+          data-categorias="proteicas economicas"
+          data-nombre="desayuno proteico"
+        >
+          <img
+            src="imagenes/imagen-desayuno-proteico.jpg"
+            alt="tostadas integrales con huevo y palta"
+          />
+          <h3>desayuno proteico</h3>
+          <p>pan integral, huevo y palta con semillas tostadas.</p>
+          <a class="boton boton-contorno" href="receta-desayuno.html"
+            >ver receta</a
+          >
+        </article>
+
+        <!-- tarjeta: snack crocante -->
+        <article
+          class="tarjeta-receta"
+          data-categorias="rapidas proteicas"
+          data-nombre="snack crocante"
+        >
+          <img
+            src="imagenes/imagen-snack-crocante.jpg"
+            alt="snack crocante de frutos secos en frasco"
+          />
+          <h3>snack crocante</h3>
+          <p>mix de frutos secos y garbanzos especiados al horno.</p>
+          <a class="boton boton-contorno" href="receta-snack.html"
+            >ver receta</a
+          >
+        </article>
+      </section>
+    </main>
+
+    <!-- pie de página -->
+    <footer class="pie">
+      <div class="pie-contenido">
+        <p>
+          &copy; 2025 nutrifit+. recetas caseras, ajustá condimentos a tu gusto.
+        </p>
+        <div class="pie-enlaces">
+          <a href="habitos.html">hábitos</a>
+          <span class="separador" aria-hidden="true">·</span>
+          <a href="nosotros.html">contacto</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- script principal -->
+    <script src="js/main.js"></script>
+  </body>
+</html>
