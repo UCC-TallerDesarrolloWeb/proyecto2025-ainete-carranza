@@ -1,5 +1,34 @@
 # NutriFit
 
+## Índice
+- [Autores](#-autores)
+- [Descripción del proyecto](#-descripción-del-proyecto)
+- [Link del sitio publicado](#-link-del-sitio-publicado)
+- [Contenido de la página](#-contenido-de-la-página)
+- [Sketch y Wireframe](#-sketch-y-wireframe)
+- [Tecnologías utilizadas](#-tecnologías-utilizadas)
+- [Funcionalidades JavaScript](#-funcionalidades-javascript)
+- [Accesibilidad](#-accesibilidad)
+- [Requisitos cumplidos del proyecto](#-requisitos-cumplidos-del-proyecto)
+- [Cómo ver localmente](#-cómo-ver-localmente)
+- [Créditos](#-créditos)
+
+### Tecnologías utilizadas
+| **Tecnología** | **Uso** |
+|---|---|
+| **HTML5** | Estructura del contenido |
+| **CSS3** | Diseño y estilos |
+| **JavaScript** | Funcionalidad e interactividad |
+| **Google Fonts** | Tipografía personalizada |
+| **Favicon** | Icono del sitio |
+
+### Cómo ver localmente
+```bash
+git clone https://github.com/UCC-TallerDesarrolloWeb/proyecto2025-ainete-carranza.git
+cd proyecto2025-ainete-carranza
+# Abrí index.html en tu navegador
+
+
 ## Autores
 - **Tobías Ainete**
 - **Alejo Carranza**
