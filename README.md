@@ -27,7 +27,7 @@
 git clone https://github.com/UCC-TallerDesarrolloWeb/proyecto2025-ainete-carranza.git
 cd proyecto2025-ainete-carranza
 # Abrí index.html en tu navegador
-
+```
 
 ## Autores
 - **Tobías Ainete**
