@@ -1,0 +1,148 @@
+@use "./_variables.scss";
+
+.portada {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  padding: 64px 0;
+  margin-bottom: 64px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 32px 0;
+  }
+}
+
+.texto-portada {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--color-texto);
+    line-height: 1.2;
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: var(--color-texto-suave);
+    line-height: 1.7;
+  }
+}
+
+.etiqueta-portada {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+  color: var(--color-principal);
+  font-weight: 600;
+
+  img {
+    width: 24px;
+    height: 24px;
+    border-radius: 0;
+  }
+}
+
+.imagen-portada {
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.seccion-introduccion {
+  margin-bottom: 64px;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 48px;
+    color: var(--color-texto);
+  }
+}
+
+.rejilla {
+  display: grid;
+  gap: 24px;
+}
+
+.rejilla-trio {
+  grid-template-columns: repeat(3, 1fr);
+
+  @media (max-width: 968px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.seccion-beneficios {
+  margin-bottom: 64px;
+  padding: 48px;
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: 18px;
+
+  h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: var(--color-texto);
+  }
+}
+
+.lista-beneficios {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  li {
+    padding-left: 24px;
+    position: relative;
+    color: var(--color-texto-suave);
+
+    &::before {
+      content: "+";
+      position: absolute;
+      left: 0;
+      color: var(--color-principal);
+      font-weight: 800;
+    }
+  }
+}
+
+.seccion-invitacion {
+  margin-bottom: 64px;
+}
+
+.contenido-invitacion {
+  text-align: center;
+  padding: 64px 48px;
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: 18px;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: var(--color-texto);
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: var(--color-texto-suave);
+    margin-bottom: 32px;
+    line-height: 1.7;
+  }
+}

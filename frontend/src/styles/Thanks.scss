@@ -1,0 +1,30 @@
+@use "./_variables.scss";
+
+.contenedor-chico {
+  max-width: 680px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+}
+
+.bloque-gracias {
+  padding: 48px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-texto);
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: var(--color-texto-suave);
+    line-height: 1.7;
+  }
+}
+

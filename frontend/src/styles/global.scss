@@ -1,0 +1,55 @@
+@use "./_variables.scss";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  min-height: 100vh;
+  background: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--font-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  border-radius: 18px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.estado-oculto {
+  display: none !important;
+}
+
+.panel-superficie {
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: 18px;
+  padding: 24px;
+}
+

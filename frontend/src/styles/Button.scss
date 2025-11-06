@@ -1,0 +1,65 @@
+@use "./_variables.scss";
+
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+
+  &-principal {
+    background: var(--color-principal);
+    color: #0e1411;
+    border-color: var(--color-principal);
+    box-shadow: 0 6px 16px rgba(77, 209, 131, 0.25);
+
+    &:hover,
+    &:focus {
+      background: var(--color-principal-oscuro);
+      border-color: var(--color-principal-oscuro);
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(44, 156, 92, 0.3);
+      text-decoration: none;
+    }
+  }
+
+  &-contorno {
+    background: transparent;
+    border: 1px solid var(--color-borde);
+    color: var(--color-texto);
+
+    &:hover,
+    &:focus {
+      background: var(--color-panel);
+      border-color: var(--color-principal);
+      text-decoration: none;
+    }
+  }
+
+  &-filtro {
+    background: transparent;
+    border: 1px solid var(--color-borde);
+    color: var(--color-texto-suave);
+    padding: 8px 16px;
+    font-size: 0.9rem;
+
+    &:hover,
+    &:focus {
+      border-color: var(--color-principal);
+      color: var(--color-texto);
+      text-decoration: none;
+    }
+
+    &.estado-activo {
+      background: var(--color-principal);
+      border-color: var(--color-principal);
+      color: #0e1411;
+    }
+  }
+}

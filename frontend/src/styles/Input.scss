@@ -1,0 +1,51 @@
+@use "./_variables.scss";
+
+.fila-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+
+  .label {
+    font-weight: 600;
+    color: var(--color-texto);
+    font-size: 0.95rem;
+  }
+
+  .input,
+  select,
+  textarea {
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1px solid var(--color-borde);
+    background: var(--color-panel);
+    color: var(--color-texto);
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-principal);
+      box-shadow: 0 0 0 3px rgba(77, 209, 131, 0.1);
+    }
+
+    &::placeholder {
+      color: var(--color-texto-suave);
+    }
+  }
+
+  .campo-error {
+    border-color: var(--color-error) !important;
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba(255, 122, 122, 0.1);
+    }
+  }
+
+  .mensaje-error {
+    color: var(--color-error);
+    font-size: 0.85rem;
+    margin-top: 4px;
+  }
+}
