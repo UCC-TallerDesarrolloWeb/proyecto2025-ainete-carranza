@@ -19,11 +19,7 @@ const Calculators = () => {
   const [caloriasErrors, setCaloriasErrors] = useState({ sexo: '', actividad: '', peso: '', altura: '', edad: '' });
   const [caloriasResult, setCaloriasResult] = useState('');
 
-  // Validación de nombre (solo letras con tildes y ñ)
-  const validateName = (value) => {
-    const pattern = /^[A-Za-zÁÉÍÓÚáéíóúÑñ]+(?:\s+[A-Za-zÁÉÍÓÚáéíóúÑñ]+)*$/;
-    return pattern.test(value.trim());
-  };
+  // 🔧 Mejora: función validateName no utilizada eliminada
 
   // Validación de edad (0-120, entero positivo)
   const validateAge = (value) => {
