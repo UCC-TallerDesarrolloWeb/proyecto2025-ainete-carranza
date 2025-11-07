@@ -30,7 +30,7 @@ const Header = () => {
     <header className="encabezado">
       <div className="marca">
         <a className="enlace-marca" href="/" onClick={(e) => { e.preventDefault(); navigate('/'); }}>
-          <span className="icono-marca" aria-hidden="true">+</span>
+          <img src="/logo.png" alt="Nutrifit+ logo" className="logo-marca" />
           <span className="texto-marca">nutrifit+</span>
         </a>
       </div>

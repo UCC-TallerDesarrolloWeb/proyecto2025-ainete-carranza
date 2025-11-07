@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Button from "@components/Button";
 import Card from "@components/Card";
-import { recipesArray } from "@data/recipes";
+import { getRecipes, getRecipeById } from "@api/recipesApi";
 import "@styles/Recipes.scss";
 
 const Recipes = () => {
@@ -11,34 +11,102 @@ const Recipes = () => {
   const [filtroActivo, setFiltroActivo] = useState('todas');
   const [terminoBusqueda, setTerminoBusqueda] = useState('');
   const [recetaDetalle, setRecetaDetalle] = useState(null);
+  const [recetas, setRecetas] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
+  // Cargar recetas desde la API al montar el componente
   useEffect(() => {
-    const id = searchParams.get('id');
-    if (id) {
-      const receta = recipesArray.find(r => r.id === id);
-      if (receta) {
-        setRecetaDetalle(receta);
+    const cargarRecetas = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const datos = await getRecipes();
+        if (datos && Array.isArray(datos)) {
+          setRecetas(datos);
+        } else {
+          setError('No se pudieron cargar las recetas. Asegurate de que el servidor API esté corriendo en http://localhost:4000');
+        }
+      } catch (err) {
+        console.error('Error al cargar recetas:', err);
+        setError('No se pudieron cargar las recetas. Verificá que json-server esté corriendo: npx json-server --watch src/data/db.json --port 4000');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    cargarRecetas();
+  }, []);
+
+  // Cargar receta detalle desde la API cuando cambia el ID en la URL
+  useEffect(() => {
+    const cargarRecetaDetalle = async () => {
+      const id = searchParams.get('id');
+      if (id) {
+        setLoading(true);
+        try {
+          const receta = await getRecipeById(id);
+          if (receta) {
+            setRecetaDetalle(receta);
+          } else {
+            // Si no se encuentra en la API, buscar en las recetas cargadas en memoria
+            const recetaEncontrada = recetas.find(r => r.id === id);
+            if (recetaEncontrada) {
+              setRecetaDetalle(recetaEncontrada);
+            } else {
+              setRecetaDetalle(null);
+              setError('Receta no encontrada');
+            }
+          }
+        } catch (err) {
+          console.error('Error al cargar receta:', err);
+          // Si falla la API, buscar en las recetas ya cargadas en memoria
+          const recetaEncontrada = recetas.find(r => r.id === id);
+          if (recetaEncontrada) {
+            setRecetaDetalle(recetaEncontrada);
+          } else {
+            setRecetaDetalle(null);
+            setError('No se pudo cargar la receta. Verificá que json-server esté corriendo.');
+          }
+        } finally {
+          setLoading(false);
+        }
       } else {
         setRecetaDetalle(null);
       }
-    } else {
-      setRecetaDetalle(null);
-    }
-  }, [searchParams]);
+    };
+
+    cargarRecetaDetalle();
+  }, [searchParams, recetas]);
 
   const normalizarTexto = (texto) => {
     return (texto || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
   };
 
-  const recetasFiltradas = recipesArray.filter(receta => {
+  const recetasFiltradas = recetas.filter(receta => {
     const coincideFiltro = filtroActivo === 'todas' || receta.categorias.includes(filtroActivo);
     const coincideBusqueda = terminoBusqueda === '' || normalizarTexto(receta.titulo).includes(normalizarTexto(terminoBusqueda));
     return coincideFiltro && coincideBusqueda;
   });
 
-  const mostrarDetalle = (id) => {
+  const mostrarDetalle = async (id) => {
     setSearchParams({ id });
-    setRecetaDetalle(recipesArray.find(r => r.id === id));
+    // Intentar cargar desde la API primero
+    try {
+      const receta = await getRecipeById(id);
+      if (receta) {
+        setRecetaDetalle(receta);
+      } else {
+        // Si no se encuentra en la API, buscar en las recetas ya cargadas en memoria
+        const recetaEncontrada = recetas.find(r => r.id === id);
+        setRecetaDetalle(recetaEncontrada || null);
+      }
+    } catch (err) {
+      console.error('Error al cargar receta:', err);
+      // Si falla la API, buscar en las recetas ya cargadas en memoria
+      const recetaEncontrada = recetas.find(r => r.id === id);
+      setRecetaDetalle(recetaEncontrada || null);
+    }
   };
 
   const ocultarDetalle = () => {
@@ -145,21 +213,41 @@ const Recipes = () => {
         </div>
       </div>
 
-      <section className="rejilla-recetas" aria-labelledby="titulo-lista-recetas">
-        <h2 id="titulo-lista-recetas" className="sr-only">
-          listado de recetas
-        </h2>
-        {recetasFiltradas.map((receta) => (
-          <Card key={receta.id} className="tarjeta-receta">
-            <img src={receta.imagen.src} alt={receta.imagen.alt} />
-            <h3>{receta.titulo}</h3>
-            <p>{receta.descripcion}</p>
-            <Button variant="outline" onClick={() => mostrarDetalle(receta.id)}>
-              ver receta
-            </Button>
-          </Card>
-        ))}
-      </section>
+      {loading && (
+        <section className="rejilla-recetas" aria-labelledby="titulo-lista-recetas">
+          <p className="texto-destacado">Cargando recetas...</p>
+        </section>
+      )}
+
+      {error && !loading && (
+        <section className="rejilla-recetas" aria-labelledby="titulo-lista-recetas">
+          <p className="texto-destacado" style={{ color: 'var(--color-error)' }}>
+            {error}
+          </p>
+        </section>
+      )}
+
+      {!loading && !error && (
+        <section className="rejilla-recetas" aria-labelledby="titulo-lista-recetas">
+          <h2 id="titulo-lista-recetas" className="sr-only">
+            listado de recetas
+          </h2>
+          {recetasFiltradas.length === 0 ? (
+            <p className="texto-destacado">No se encontraron recetas con los filtros seleccionados.</p>
+          ) : (
+            recetasFiltradas.map((receta) => (
+              <Card key={receta.id} className="tarjeta-receta">
+                <img src={receta.imagen.src} alt={receta.imagen.alt} />
+                <h3>{receta.titulo}</h3>
+                <p>{receta.descripcion}</p>
+                <Button variant="outline" onClick={() => mostrarDetalle(receta.id)}>
+                  ver receta
+                </Button>
+              </Card>
+            ))
+          )}
+        </section>
+      )}
     </main>
   );
 };
