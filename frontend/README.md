@@ -161,6 +161,119 @@ frontend/
 - Los estilos están organizados siguiendo la metodología BEM donde corresponde
 - El código está documentado con JSDoc en funciones complejas
 
+## 📘 Pasos de ejecución del proyecto (2026)
+
+1. **Clonar el repositorio**
+   ```bash
+   git clone https://github.com/<usuario>/<nombre-del-repo>.git
+   cd <nombre-del-repo>/frontend
+   ```
+
+2. **Instalar dependencias**
+   ```bash
+   npm install
+   ```
+
+3. **Ejecutar el entorno de desarrollo**
+   ```bash
+   npm run dev
+   ```
+
+4. **Acceder al proyecto en el navegador**
+   - Abrir `http://localhost:5173/` (o el puerto que Vite asigne automáticamente)
+
+5. **(Opcional) Compilar para producción**
+   ```bash
+   npm run build
+   ```
+
+6. **(Opcional) Preview del build de producción**
+   ```bash
+   npm run preview
+   ```
+
+---
+
+## 🧰 Tecnologías utilizadas (2026)
+
+- **Vite + React** → Framework base del proyecto.
+- **React Router DOM** → Enrutamiento entre páginas.
+- **SASS (SCSS)** → Sistema de estilos modular.
+- **JavaScript (ES2026)** → Lógica y validaciones.
+- **LocalStorage API** → Persistencia local de datos.
+- **Fetch + async/await** → Consumo de datos simulados (mock API).
+- **HTML semántico + JSX** → Estructura de componentes.
+- **Git + GitHub** → Control de versiones y despliegue.
+
+---
+
+## 📖 Descripción del trabajo realizado (Segundo Parcial)
+
+Durante esta segunda etapa del proyecto, se migró la estructura original desarrollada en **HTML, CSS y JavaScript puro** hacia un entorno moderno con **React + Vite**.  
+
+El objetivo fue aplicar buenas prácticas de modularización, reutilización de componentes y validaciones en tiempo real.  
+
+Se mantuvo la estética y la lógica del proyecto original, adaptándola al paradigma de componentes de React.  
+
+Además, se incorporaron validaciones de formularios, manejo de estados con Hooks, almacenamiento local con LocalStorage y rutas dinámicas mediante React Router DOM.  
+
+El resultado es un proyecto más escalable, organizado y acorde a los estándares de desarrollo web actuales.
+
+---
+
+## 📦 Estructura del proyecto
+
+```
+frontend/
+├── public/                    # Archivos estáticos (imágenes, favicon)
+│   ├── favicon.png
+│   ├── logo.png
+│   ├── logo-ladotexto.png
+│   └── [imágenes de recetas]/
+├── src/
+│   ├── api/                   # Servicios API (mock) - vacío actualmente
+│   ├── assets/                # Recursos (logo.png)
+│   ├── components/            # Componentes reutilizables
+│   │   ├── Button.jsx
+│   │   ├── Card.jsx
+│   │   ├── Footer.jsx
+│   │   ├── Header.jsx
+│   │   └── Input.jsx
+│   ├── data/                  # Datos estáticos
+│   │   └── recipes.js
+│   ├── pages/                 # Páginas/componentes de rutas
+│   │   ├── About.jsx
+│   │   ├── Calculators.jsx
+│   │   ├── Habits.jsx
+│   │   ├── Home.jsx
+│   │   ├── Layout.jsx
+│   │   ├── Recipes.jsx
+│   │   └── Thanks.jsx
+│   ├── styles/                # Estilos SASS
+│   │   ├── _variables.scss
+│   │   ├── global.scss
+│   │   ├── About.scss
+│   │   ├── Button.scss
+│   │   ├── Calculators.scss
+│   │   ├── Card.scss
+│   │   ├── Footer.scss
+│   │   ├── Habits.scss
+│   │   ├── Header.scss
+│   │   ├── Home.scss
+│   │   ├── Input.scss
+│   │   ├── Layout.scss
+│   │   ├── Recipes.scss
+│   │   └── Thanks.scss
+│   └── main.jsx               # Punto de entrada
+├── index.html
+├── package.json
+├── vite.config.js
+├── eslint.config.js
+└── README.md
+```
+
+---
+
 ## 📅 Año
 
 2026
@@ -172,3 +285,7 @@ Migración realizada basándose en el proyecto original de ainete & carranza y s
 ## 📄 Licencia
 
 Este proyecto es parte de un trabajo académico.
+
+---
+
+✅ Actualizado automáticamente para cumplir con los requisitos del Segundo Parcial (2026)

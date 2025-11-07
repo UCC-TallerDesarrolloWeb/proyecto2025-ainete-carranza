@@ -18,9 +18,6 @@ const Calculators = () => {
   const [caloriasData, setCaloriasData] = useState({ sexo: '', actividad: '', peso: '', altura: '', edad: '' });
   const [caloriasErrors, setCaloriasErrors] = useState({ sexo: '', actividad: '', peso: '', altura: '', edad: '' });
   const [caloriasResult, setCaloriasResult] = useState('');
-
-  // 🔧 Mejora: función validateName no utilizada eliminada
-
   // Validación de edad (0-120, entero positivo)
   const validateAge = (value) => {
     const trimmed = value.trim();
