@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "@styles/Header.scss";
 
+import logo from '../assets/logo.png';
+
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -30,7 +32,7 @@ const Header = () => {
     <header className="encabezado">
       <div className="marca">
         <a className="enlace-marca" href="/" onClick={(e) => { e.preventDefault(); navigate('/'); }}>
-          <img src="/logo.png" alt="Nutrifit+ logo" className="logo-marca" />
+          <img src={logo} alt="Nutrifit+ logo" className="logo-marca" />
           <span className="texto-marca">nutrifit+</span>
         </a>
       </div>
