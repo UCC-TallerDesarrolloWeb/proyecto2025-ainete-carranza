@@ -6,7 +6,8 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   min-height: 100vh;
   background: var(--color-fondo);
   color: var(--color-texto);
@@ -42,8 +43,8 @@ img {
   border: 0;
 }
 
-.estado-oculto {
-  display: none !important;
+body .estado-oculto {
+  display: none;
 }
 
 .panel-superficie {
@@ -52,4 +53,3 @@ img {
   border-radius: 18px;
   padding: 24px;
 }
-

@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import Button from "@components/Button";
 import Card from "@components/Card";
 import { getRecipes, getRecipeById } from "@api/recipesApi";
 import "@styles/Recipes.scss";
 
 const Recipes = () => {
-  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [filtroActivo, setFiltroActivo] = useState('todas');
   const [terminoBusqueda, setTerminoBusqueda] = useState('');
@@ -221,7 +220,7 @@ const Recipes = () => {
 
       {error && !loading && (
         <section className="rejilla-recetas" aria-labelledby="titulo-lista-recetas">
-          <p className="texto-destacado" style={{ color: 'var(--color-error)' }}>
+          <p className="texto-destacado texto-error">
             {error}
           </p>
         </section>

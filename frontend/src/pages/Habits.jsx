@@ -40,6 +40,7 @@ const Habits = () => {
     } catch (error) {
       console.error("Error al cargar hábitos:", error);
       setHabitos(clonarHabitos());
+      alert("Hubo un problema al cargar tus hábitos. Se reiniciaron los valores.");
     }
   };
 
@@ -67,6 +68,7 @@ const Habits = () => {
         setFecha("Sin guardar");
       }
     } catch (error) {
+      console.error("Error al actualizar fecha:", error);
       setFecha("Sin guardar");
     }
   };
