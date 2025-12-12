@@ -1,63 +1,51 @@
 ﻿<!DOCTYPE html>
-<!--
-  página: gracias.html
-  propósito: confirmar el envío del formulario de contacto
-  notas: mantiene mensaje aria-live y enlace claro para volver al inicio
--->
+
 <html lang="es">
-  <head>
-    <!-- metadatos principales del documento -->
-    <meta charset="UTF-8" />
-    <!-- corrige los caracteres especiales -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="ainete & carranza" />
 
-    <!-- descripción y palabras clave para seo -->
-    <meta
-      name="description"
-      content="mensaje de confirmación del formulario de contacto de nutrifit+."
-    />
-    <meta name="keywords" content="gracias, confirmación, contacto" />
+<head>
 
-    <!-- título de la pestaña -->
-    <title>gracias - nutrifit+</title>
+  <meta charset="UTF-8" />
 
-    <!-- ícono del sitio -->
-    <link rel="icon" href="imagenes/logo.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="ainete & carranza" />
 
-    <!-- conexiones a google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- tipografía principal -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
-      rel="stylesheet"
-    />
+  <meta name="description" content="mensaje de confirmación del formulario de contacto de nutrifit+." />
+  <meta name="keywords" content="gracias, confirmación, contacto" />
 
-    <!-- hoja de estilos -->
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
 
-  <body class="pagina-gracias">
-    <!-- área principal con mensaje de confirmación -->
-    <main class="contenedor contenedor-chico">
-      <section class="bloque-gracias panel-superficie" aria-labelledby="titulo-gracias">
-        <!-- título principal de agradecimiento -->
-        <h1 id="titulo-gracias">¡gracias por tu mensaje!</h1>
+  <title>gracias - nutrifit+</title>
+  <link rel="icon" href="imagenes/logo.png" type="image/png" />
 
-        <!-- texto de confirmación accesible con aria-live -->
-        <p id="mensaje-gracias" aria-live="polite">
-          hemos recibido tu consulta y en breve nos pondremos en contacto
-          contigo.
-        </p>
 
-        <!-- botón para volver a la página de inicio -->
-        <a class="boton boton-principal" href="index.html">volver al inicio</a>
-      </section>
-    </main>
 
-    <!-- script principal -->
-    <script src="js/main.js"></script>
-  </body>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="pagina-gracias">
+
+  <main class="contenedor contenedor-chico">
+    <section class="bloque-gracias panel-superficie" aria-labelledby="titulo-gracias">
+
+      <h1 id="titulo-gracias">¡gracias por tu mensaje!</h1>
+
+
+      <p id="mensaje-gracias" aria-live="polite">
+        hemos recibido tu consulta y en breve nos pondremos en contacto
+        contigo.
+      </p>
+
+
+      <a class="boton boton-principal" href="index.html">volver al inicio</a>
+    </section>
+  </main>
+
+
+  <script src="js/main.js"></script>
+</body>
+
 </html>

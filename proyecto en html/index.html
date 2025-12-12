@@ -1,143 +1,129 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="ainete & carranza" />
-    <meta
-      name="description"
-      content="nutrifit+, herramientas simples para mejorar tu bienestar con guías, recetas y calculadoras."
-    />
-    <meta
-      name="keywords"
-      content="nutrifit, nutrición, salud, hábitos, recetas, calculadora imc"
-    />
-    <title>nutrifit+</title>
-    <link rel="icon" href="imagenes/logo.png" type="image/png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
 
-  <body>
-    <header class="encabezado">
-      <div class="marca">
-        <a class="enlace-marca" href="index.html">
-          <span class="icono-marca" aria-hidden="true">+</span>
-          <span class="texto-marca">nutrifit+</span>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="ainete & carranza" />
+  <meta name="description"
+    content="nutrifit+, herramientas simples para mejorar tu bienestar con guías, recetas y calculadoras." />
+  <meta name="keywords" content="nutrifit, nutrición, salud, hábitos, recetas, calculadora imc" />
+  <title>nutrifit+</title>
+  <link rel="icon" href="imagenes/logo.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <header class="encabezado">
+    <div class="marca">
+      <a class="enlace-marca" href="index.html">
+        <span class="icono-marca" aria-hidden="true">+</span>
+        <span class="texto-marca">nutrifit+</span>
+      </a>
+    </div>
+    <nav class="navegacion" aria-label="principal">
+      <button class="boton-menu" id="boton-menu" aria-label="abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="lista-menu" id="lista-menu">
+        <li><a href="index.html">inicio</a></li>
+        <li><a href="calculadoras.html">calculadoras</a></li>
+        <li><a href="habitos.html">hábitos</a></li>
+        <li><a href="recetas.html">recetas</a></li>
+        <li><a href="nosotros.html">nosotros</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="contenedor">
+    <section class="portada" id="seccion-portada">
+      <div class="texto-portada">
+        <div class="etiqueta-portada">
+          <img src="imagenes/logo.png" alt="emblema nutrifit+" />
+          <span>bienvenidos</span>
+        </div>
+        <h1>nutrifit+</h1>
+        <p>
+          tu espacio para equilibrar energía y bienestar con herramientas
+          accesibles, rutinas simples y recetas pensadas para cada día.
+        </p>
+        <a class="boton boton-principal" href="calculadoras.html">
+          explorar calculadoras
         </a>
       </div>
-      <nav class="navegacion" aria-label="principal">
-        <button class="boton-menu" id="boton-menu" aria-label="abrir menú">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <ul class="lista-menu" id="lista-menu">
-          <li><a href="index.html">inicio</a></li>
-          <li><a href="calculadoras.html">calculadoras</a></li>
-          <li><a href="habitos.html">hábitos</a></li>
-          <li><a href="recetas.html">recetas</a></li>
-          <li><a href="nosotros.html">nosotros</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main class="contenedor">
-      <section class="portada" id="seccion-portada">
-        <div class="texto-portada">
-          <div class="etiqueta-portada">
-            <img src="imagenes/logo.png" alt="emblema nutrifit+" />
-            <span>bienvenidos</span>
-          </div>
-          <h1>nutrifit+</h1>
-          <p>
-            tu espacio para equilibrar energía y bienestar con herramientas
-            accesibles, rutinas simples y recetas pensadas para cada día.
-          </p>
-          <a class="boton boton-principal" href="calculadoras.html">
-            explorar calculadoras
-          </a>
-        </div>
-        <figure class="imagen-portada">
-          <img
-            src="imagenes/logo-ladotexto.png"
-            alt="logotipo nutrifit+ con texto"
-          />
-        </figure>
-      </section>
-      <section
-        class="seccion-introduccion"
-        aria-labelledby="titulo-introduccion"
-      >
-        <h2 id="titulo-introduccion">
-          todo lo que necesitás para una vida equilibrada
-        </h2>
+      <figure class="imagen-portada">
+        <img src="imagenes/logo-ladotexto.png" alt="logotipo nutrifit+ con texto" />
+      </figure>
+    </section>
+    <section class="seccion-introduccion" aria-labelledby="titulo-introduccion">
+      <h2 id="titulo-introduccion">
+        todo lo que necesitás para una vida equilibrada
+      </h2>
 
-        <div class="rejilla rejilla-trio">
-          <article class="tarjeta panel-superficie">
-            <h3>calculadoras intuitivas</h3>
-            <p>
-              conocé tu imc, la hidratación ideal y las calorías estimadas con
-              pasos guiados y un panel visual.
-            </p>
-            <a class="boton boton-contorno" href="calculadoras.html">
-              calcular ahora
-            </a>
-          </article>
-          <article class="tarjeta panel-superficie">
-            <h3>hábitos que suman</h3>
-            <p>
-              acomodá tu rutina con hábitos simples que se guardan en tu
-              dispositivo y podés ajustar a diario.
-            </p>
-            <a class="boton boton-contorno" href="habitos.html">ver hábitos</a>
-          </article>
-          <article class="tarjeta panel-superficie">
-            <h3>recetas reales</h3>
-            <p>
-              ideas rápidas, económicas y proteicas con ingredientes cotidianos
-              y fotos propias.
-            </p>
-            <a class="boton boton-contorno" href="recetas.html">
-              descubrir recetas
-            </a>
-          </article>
-        </div>
-      </section>
-      <section class="seccion-beneficios" aria-labelledby="titulo-beneficios">
-        <h2 id="titulo-beneficios">beneficios de nutrifit+</h2>
-        <ul class="lista-beneficios">
-          <li>contenido 100% en español claro y sin tecnicismos.</li>
-          <li>herramientas digitales que acompañan cada hábito.</li>
-          <li>soporte cercano para responder todas tus dudas.</li>
-          <li>recetas y recursos pensados para el día a día.</li>
-        </ul>
-      </section>
-      <section class="seccion-invitacion" aria-labelledby="titulo-invitacion">
-        <div class="contenido-invitacion">
-          <h2 id="titulo-invitacion">
-            sumate a una comunidad que elige sentirse mejor
-          </h2>
+      <div class="rejilla rejilla-trio">
+        <article class="tarjeta panel-superficie">
+          <h3>calculadoras intuitivas</h3>
           <p>
-            creá tu lista de hábitos, calculá tu plan diario y escribinos para
-            sumarte a los talleres de nutrifit+. estamos para acompañarte.
+            conocé tu imc, la hidratación ideal y las calorías estimadas con
+            pasos guiados y un panel visual.
           </p>
-          <a class="boton boton-principal" href="nosotros.html">contactanos</a>
-        </div>
-      </section>
-    </main>
-    <footer class="pie">
-      <div class="pie-contenido">
-        <p>&copy; 2025 nutrifit+.</p>
-        <div class="pie-enlaces">
-          <a href="nosotros.html">contacto</a>
-        </div>
+          <a class="boton boton-contorno" href="calculadoras.html">
+            calcular ahora
+          </a>
+        </article>
+        <article class="tarjeta panel-superficie">
+          <h3>hábitos que suman</h3>
+          <p>
+            acomodá tu rutina con hábitos simples que se guardan en tu
+            dispositivo y podés ajustar a diario.
+          </p>
+          <a class="boton boton-contorno" href="habitos.html">ver hábitos</a>
+        </article>
+        <article class="tarjeta panel-superficie">
+          <h3>recetas reales</h3>
+          <p>
+            ideas rápidas, económicas y proteicas con ingredientes cotidianos
+            y fotos propias.
+          </p>
+          <a class="boton boton-contorno" href="recetas.html">
+            descubrir recetas
+          </a>
+        </article>
       </div>
-    </footer>
-    <script src="js/main.js"></script>
-  </body>
+    </section>
+    <section class="seccion-beneficios" aria-labelledby="titulo-beneficios">
+      <h2 id="titulo-beneficios">beneficios de nutrifit+</h2>
+      <ul class="lista-beneficios">
+        <li>contenido 100% en español claro y sin tecnicismos.</li>
+        <li>herramientas digitales que acompañan cada hábito.</li>
+        <li>soporte cercano para responder todas tus dudas.</li>
+        <li>recetas y recursos pensados para el día a día.</li>
+      </ul>
+    </section>
+    <section class="seccion-invitacion" aria-labelledby="titulo-invitacion">
+      <div class="contenido-invitacion">
+        <h2 id="titulo-invitacion">
+          sumate a una comunidad que elige sentirse mejor
+        </h2>
+        <p>
+          creá tu lista de hábitos, calculá tu plan diario y escribinos para
+          sumarte a los talleres de nutrifit+. estamos para acompañarte.
+        </p>
+        <a class="boton boton-principal" href="nosotros.html">contactanos</a>
+      </div>
+    </section>
+  </main>
+  <footer class="pie">
+    <div class="pie-contenido">
+      <p>&copy; 2025 nutrifit+.</p>
+      <div class="pie-enlaces">
+        <a href="nosotros.html">contacto</a>
+      </div>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+
 </html>

@@ -1,197 +1,127 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="ainete & carranza" />
-    <meta
-      name="description"
-      content="recetas saludables de nutrifit+ con filtros por categoría y fotos propias."
-    />
-    <meta
-      name="keywords"
-      content="recetas saludables, cocina fácil, comidas proteicas"
-    />
-    <title>recetas - nutrifit+</title>
-    <link rel="icon" href="imagenes/logo.png" type="image/png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
 
-  <body>
-    <header class="encabezado">
-      <div class="marca">
-        <a class="enlace-marca" href="index.html">
-          <span class="icono-marca" aria-hidden="true">+</span>
-          <span class="texto-marca">nutrifit+</span>
-        </a>
-      </div>
-      <nav class="navegacion" aria-label="principal">
-        <button class="boton-menu" id="boton-menu" aria-label="abrir menú">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <ul class="lista-menu" id="lista-menu">
-          <li><a href="index.html">inicio</a></li>
-          <li><a href="calculadoras.html">calculadoras</a></li>
-          <li><a href="habitos.html">hábitos</a></li>
-          <li><a href="recetas.html">recetas</a></li>
-          <li><a href="nosotros.html">nosotros</a></li>
-        </ul>
-      </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="ainete & carranza" />
+  <meta name="description" content="recetas saludables de nutrifit+ con filtros por categoría y fotos propias." />
+  <meta name="keywords" content="recetas saludables, cocina fácil, comidas proteicas" />
+  <title>recetas - nutrifit+</title>
+  <link rel="icon" href="imagenes/logo.png" type="image/png" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <header class="encabezado">
+    <div class="marca">
+      <a class="enlace-marca" href="index.html">
+        <span class="icono-marca" aria-hidden="true">+</span>
+        <span class="texto-marca">nutrifit+</span>
+      </a>
+    </div>
+    <nav class="navegacion" aria-label="principal">
+      <button class="boton-menu" id="boton-menu" aria-label="abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="lista-menu" id="lista-menu">
+        <li><a href="index.html">inicio</a></li>
+        <li><a href="calculadoras.html">calculadoras</a></li>
+        <li><a href="habitos.html">hábitos</a></li>
+        <li><a href="recetas.html">recetas</a></li>
+        <li><a href="nosotros.html">nosotros</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="contenedor" id="pagina-recetas">
+    <header class="encabezado-seccion">
+      <h1>recetas que inspiran</h1>
+      <p class="texto-destacado">
+        elegimos preparaciones simples para cualquier día. filtrá por lo que
+        necesites y combiná ingredientes de tu cocina.
+      </p>
     </header>
-    <main class="contenedor" id="pagina-recetas">
-      <header class="encabezado-seccion">
-        <h1>recetas que inspiran</h1>
-        <p class="texto-destacado">
-          elegimos preparaciones simples para cualquier día. filtrá por lo que
-          necesites y combiná ingredientes de tu cocina.
-        </p>
-      </header>
-      <div class="barra-recetas">
-        <label class="solo-lectores" for="buscador-recetas"
-          >buscar receta</label
-        >
-        <input
-          id="buscador-recetas"
-          class="buscador-recetas"
-          type="search"
-          placeholder="buscar receta..."
-          aria-label="buscar receta por nombre"
-        />
-        <div class="barra-filtros" role="group" aria-label="filtrar recetas">
-          <button class="boton boton-filtro estado-activo" data-filtro="todas">
-            todas
-          </button>
-          <button class="boton boton-filtro" data-filtro="rapidas">
-            rápidas
-          </button>
-          <button class="boton boton-filtro" data-filtro="economicas">
-            económicas
-          </button>
-          <button class="boton boton-filtro" data-filtro="proteicas">
-            proteicas
-          </button>
-        </div>
+    <div class="barra-recetas">
+      <label class="solo-lectores" for="buscador-recetas">buscar receta</label>
+      <input id="buscador-recetas" class="buscador-recetas" type="search" placeholder="buscar receta..."
+        aria-label="buscar receta por nombre" />
+      <div class="barra-filtros" role="group" aria-label="filtrar recetas">
+        <button class="boton boton-filtro estado-activo" data-filtro="todas">
+          todas
+        </button>
+        <button class="boton boton-filtro" data-filtro="rapidas">
+          rápidas
+        </button>
+        <button class="boton boton-filtro" data-filtro="economicas">
+          económicas
+        </button>
+        <button class="boton boton-filtro" data-filtro="proteicas">
+          proteicas
+        </button>
       </div>
-      <section class="rejilla-recetas" aria-labelledby="titulo-lista-recetas">
-        <h2 id="titulo-lista-recetas" class="solo-lectores">
-          listado de recetas
-        </h2>
-        <article
-          class="tarjeta-receta panel-superficie"
-          data-categorias="rapidas economicas"
-          data-nombre="ensalada verde express"
-        >
-          <img
-            src="imagenes/image-ensalada.jpg"
-            alt="bowl de ensalada fresca con hojas verdes"
-          />
-          <h3>ensalada verde express</h3>
-          <p>lista en 10 minutos con hojas, semillas y vinagreta cítrica.</p>
-          <a class="boton boton-contorno" href="recetas.html?id=ensalada"
-            >ver receta</a
-          >
-        </article>
-        <article
-          class="tarjeta-receta panel-superficie"
-          data-categorias="proteicas"
-          data-nombre="power bowl proteico"
-        >
-          <img
-            src="imagenes/imagen-bowl-proteico.jpg"
-            alt="plato proteico con pollo grillado y quinoa"
-          />
-          <h3>power bowl proteico</h3>
-          <p>pollo grillado, quinoa y vegetales asados con limón.</p>
-          <a class="boton boton-contorno" href="recetas.html?id=power-bowl"
-            >ver receta</a
-          >
-        </article>
-        <article
-          class="tarjeta-receta panel-superficie"
-          data-categorias="rapidas"
-          data-nombre="batido energético"
-        >
-          <img
-            src="imagenes/imagen-batido-energetico.jpg"
-            alt="vaso de batido energético con frutos rojos"
-          />
-          <h3>batido energético</h3>
-          <p>banana, frutos rojos y avena listo para llevar.</p>
-          <a class="boton boton-contorno" href="recetas.html?id=batido"
-            >ver receta</a
-          >
-        </article>
-        <article
-          class="tarjeta-receta panel-superficie"
-          data-categorias="economicas"
-          data-nombre="wrap veggie crujiente"
-        >
-          <img
-            src="imagenes/imagen-wrap-veggie.jpg"
-            alt="wrap vegetariano con vegetales frescos"
-          />
-          <h3>wrap veggie crujiente</h3>
-          <p>garbanzos, zanahoria y hummus en tortilla integral.</p>
-          <a class="boton boton-contorno" href="recetas.html?id=wrap"
-            >ver receta</a
-          >
-        </article>
-        <article
-          class="tarjeta-receta panel-superficie"
-          data-categorias="proteicas economicas"
-          data-nombre="desayuno proteico"
-        >
-          <img
-            src="imagenes/imagen-desayuno-proteico.jpg"
-            alt="tostadas integrales con huevo y palta"
-          />
-          <h3>desayuno proteico</h3>
-          <p>pan integral, huevo y palta con semillas tostadas.</p>
-          <a class="boton boton-contorno" href="recetas.html?id=desayuno"
-            >ver receta</a
-          >
-        </article>
-        <article
-          class="tarjeta-receta panel-superficie"
-          data-categorias="rapidas proteicas"
-          data-nombre="snack crocante"
-        >
-          <img
-            src="imagenes/imagen-snack-crocante.jpg"
-            alt="snack crocante de frutos secos en frasco"
-          />
-          <h3>snack crocante</h3>
-          <p>mix de frutos secos y garbanzos especiados al horno.</p>
-          <a class="boton boton-contorno" href="recetas.html?id=snack"
-            >ver receta</a
-          >
-        </article>
-      </section>
-      <article
-        class="detalle-receta panel-superficie estado-oculto"
-        id="detalle-receta"
-      ></article>
-    </main>
-    <footer class="pie">
-      <div class="pie-contenido">
-        <p>
-          &copy; 2025 nutrifit+. recetas caseras, ajustá condimentos a tu gusto.
-        </p>
-        <div class="pie-enlaces">
-          <a href="habitos.html">hábitos</a>
-          <span class="separador" aria-hidden="true">·</span>
-          <a href="nosotros.html">contacto</a>
-        </div>
+    </div>
+    <section class="rejilla-recetas" aria-labelledby="titulo-lista-recetas">
+      <h2 id="titulo-lista-recetas" class="solo-lectores">
+        listado de recetas
+      </h2>
+      <article class="tarjeta-receta panel-superficie" data-categorias="rapidas economicas"
+        data-nombre="ensalada verde express">
+        <img src="imagenes/image-ensalada.jpg" alt="bowl de ensalada fresca con hojas verdes" />
+        <h3>ensalada verde express</h3>
+        <p>lista en 10 minutos con hojas, semillas y vinagreta cítrica.</p>
+        <a class="boton boton-contorno" href="recetas.html?id=ensalada">ver receta</a>
+      </article>
+      <article class="tarjeta-receta panel-superficie" data-categorias="proteicas" data-nombre="power bowl proteico">
+        <img src="imagenes/imagen-bowl-proteico.jpg" alt="plato proteico con pollo grillado y quinoa" />
+        <h3>power bowl proteico</h3>
+        <p>pollo grillado, quinoa y vegetales asados con limón.</p>
+        <a class="boton boton-contorno" href="recetas.html?id=power-bowl">ver receta</a>
+      </article>
+      <article class="tarjeta-receta panel-superficie" data-categorias="rapidas" data-nombre="batido energético">
+        <img src="imagenes/imagen-batido-energetico.jpg" alt="vaso de batido energético con frutos rojos" />
+        <h3>batido energético</h3>
+        <p>banana, frutos rojos y avena listo para llevar.</p>
+        <a class="boton boton-contorno" href="recetas.html?id=batido">ver receta</a>
+      </article>
+      <article class="tarjeta-receta panel-superficie" data-categorias="economicas" data-nombre="wrap veggie crujiente">
+        <img src="imagenes/imagen-wrap-veggie.jpg" alt="wrap vegetariano con vegetales frescos" />
+        <h3>wrap veggie crujiente</h3>
+        <p>garbanzos, zanahoria y hummus en tortilla integral.</p>
+        <a class="boton boton-contorno" href="recetas.html?id=wrap">ver receta</a>
+      </article>
+      <article class="tarjeta-receta panel-superficie" data-categorias="proteicas economicas"
+        data-nombre="desayuno proteico">
+        <img src="imagenes/imagen-desayuno-proteico.jpg" alt="tostadas integrales con huevo y palta" />
+        <h3>desayuno proteico</h3>
+        <p>pan integral, huevo y palta con semillas tostadas.</p>
+        <a class="boton boton-contorno" href="recetas.html?id=desayuno">ver receta</a>
+      </article>
+      <article class="tarjeta-receta panel-superficie" data-categorias="rapidas proteicas" data-nombre="snack crocante">
+        <img src="imagenes/imagen-snack-crocante.jpg" alt="snack crocante de frutos secos en frasco" />
+        <h3>snack crocante</h3>
+        <p>mix de frutos secos y garbanzos especiados al horno.</p>
+        <a class="boton boton-contorno" href="recetas.html?id=snack">ver receta</a>
+      </article>
+    </section>
+    <article class="detalle-receta panel-superficie estado-oculto" id="detalle-receta"></article>
+  </main>
+  <footer class="pie">
+    <div class="pie-contenido">
+      <p>
+        &copy; 2025 nutrifit+. recetas caseras, ajustá condimentos a tu gusto.
+      </p>
+      <div class="pie-enlaces">
+        <a href="habitos.html">hábitos</a>
+        <span class="separador" aria-hidden="true">·</span>
+        <a href="nosotros.html">contacto</a>
       </div>
-    </footer>
-    <script src="js/main.js"></script>
-  </body>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+
 </html>

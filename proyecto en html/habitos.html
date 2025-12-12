@@ -1,110 +1,88 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="ainete & carranza" />
-    <meta
-      name="description"
-      content="lista editable de hábitos saludables de nutrifit+ con guardado local y recordatorios básicos."
-    />
-    <meta
-      name="keywords"
-      content="hábitos saludables, seguimiento, nutrición"
-    />
-    <title>hábitos - nutrifit+</title>
-    <link rel="icon" href="imagenes/logo.png" type="image/png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
 
-  <body>
-    <header class="encabezado">
-      <div class="marca">
-        <a class="enlace-marca" href="index.html">
-          <span class="icono-marca" aria-hidden="true">+</span>
-          <span class="texto-marca">nutrifit+</span>
-        </a>
-      </div>
-      <button aria-label="cambiar tema"></button>
-      <nav class="navegacion" aria-label="principal">
-        <button class="boton-menu" id="boton-menu" aria-label="abrir menú">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <ul class="lista-menu" id="lista-menu">
-          <li><a href="index.html">inicio</a></li>
-          <li><a href="calculadoras.html">calculadoras</a></li>
-          <li><a href="habitos.html">hábitos</a></li>
-          <li><a href="recetas.html">recetas</a></li>
-          <li><a href="nosotros.html">nosotros</a></li>
-        </ul>
-      </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="ainete & carranza" />
+  <meta name="description"
+    content="lista editable de hábitos saludables de nutrifit+ con guardado local y recordatorios básicos." />
+  <meta name="keywords" content="hábitos saludables, seguimiento, nutrición" />
+  <title>hábitos - nutrifit+</title>
+  <link rel="icon" href="imagenes/logo.png" type="image/png" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <header class="encabezado">
+    <div class="marca">
+      <a class="enlace-marca" href="index.html">
+        <span class="icono-marca" aria-hidden="true">+</span>
+        <span class="texto-marca">nutrifit+</span>
+      </a>
+    </div>
+    <button aria-label="cambiar tema"></button>
+    <nav class="navegacion" aria-label="principal">
+      <button class="boton-menu" id="boton-menu" aria-label="abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="lista-menu" id="lista-menu">
+        <li><a href="index.html">inicio</a></li>
+        <li><a href="calculadoras.html">calculadoras</a></li>
+        <li><a href="habitos.html">hábitos</a></li>
+        <li><a href="recetas.html">recetas</a></li>
+        <li><a href="nosotros.html">nosotros</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="contenedor" id="pagina-habitos">
+    <header class="encabezado-seccion">
+      <h1>mis hábitos diarios</h1>
+      <p class="texto-destacado">
+        seleccioná lo que cumpliste hoy, sumá hábitos personalizados y guardá
+        tu progreso.
+      </p>
     </header>
-    <main class="contenedor" id="pagina-habitos">
-      <header class="encabezado-seccion">
-        <h1>mis hábitos diarios</h1>
-        <p class="texto-destacado">
-          seleccioná lo que cumpliste hoy, sumá hábitos personalizados y guardá
-          tu progreso.
-        </p>
-      </header>
-      <section class="panel-habitos panel-superficie" aria-labelledby="titulo-lista-habitos">
-        <h2 id="titulo-lista-habitos">checklist saludable</h2>
-        <form
-          id="formulario-habitos"
-          class="formulario-habitos"
-          aria-describedby="estado-habitos"
-        >
-          <ul class="lista-habitos" id="lista-habitos"></ul>
-          <div class="acciones-habitos">
-            <label class="solo-lectores" for="entrada-habito"
-              >agregar hábito</label
-            >
-            <input
-              id="entrada-habito"
-              name="nuevoHabito"
-              type="text"
-              placeholder="escribí un hábito nuevo"
-              maxlength="60"
-            />
-            <button
-              class="boton boton-contorno"
-              type="button"
-              id="boton-agregar-habito"
-            >
-              agregar
-            </button>
-          </div>
-          <button class="boton boton-principal" type="submit">
-            guardar progreso
+    <section class="panel-habitos panel-superficie" aria-labelledby="titulo-lista-habitos">
+      <h2 id="titulo-lista-habitos">checklist saludable</h2>
+      <form id="formulario-habitos" class="formulario-habitos" aria-describedby="estado-habitos">
+        <ul class="lista-habitos" id="lista-habitos"></ul>
+        <div class="acciones-habitos">
+          <label class="solo-lectores" for="entrada-habito">agregar hábito</label>
+          <input id="entrada-habito" name="nuevoHabito" type="text" placeholder="escribí un hábito nuevo"
+            maxlength="60" />
+          <button class="boton boton-contorno" type="button" id="boton-agregar-habito">
+            agregar
           </button>
-        </form>
-        <p id="estado-habitos" class="estado-habitos" aria-live="polite"></p>
-        <p class="texto-fecha-habitos">
-          última actualización: <span id="fecha-habitos">-</span>
-        </p>
-      </section>
-    </main>
-    <footer class="pie">
-      <div class="pie-contenido">
-        <p>
-          &copy; 2025 nutrifit+. registramos tus hábitos solo en tu navegador.
-        </p>
-        <div class="pie-enlaces">
-          <a href="recetas.html">recetas</a>
-          <span class="separador" aria-hidden="true">|</span>
-          <a href="nosotros.html">contacto</a>
         </div>
+        <button class="boton boton-principal" type="submit">
+          guardar progreso
+        </button>
+      </form>
+      <p id="estado-habitos" class="estado-habitos" aria-live="polite"></p>
+      <p class="texto-fecha-habitos">
+        última actualización: <span id="fecha-habitos">-</span>
+      </p>
+    </section>
+  </main>
+  <footer class="pie">
+    <div class="pie-contenido">
+      <p>
+        &copy; 2025 nutrifit+. registramos tus hábitos solo en tu navegador.
+      </p>
+      <div class="pie-enlaces">
+        <a href="recetas.html">recetas</a>
+        <span class="separador" aria-hidden="true">|</span>
+        <a href="nosotros.html">contacto</a>
       </div>
-    </footer>
-    <script src="js/main.js"></script>
-    <script src="js/habitos.js"></script>
-  </body>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+  <script src="js/habitos.js"></script>
+</body>
+
 </html>
