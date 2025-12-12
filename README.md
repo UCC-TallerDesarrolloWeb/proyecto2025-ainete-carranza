@@ -198,10 +198,10 @@ npm run dev
 #### 4️⃣ Levanta el mock de backend con json-server (Opcional)
 
 ```bash
-npx json-server --watch src/data/db.json --port 4000
+npx json-server --watch src/api/db.json --port 4000
 ```
 
-**Nota:** El proyecto actualmente utiliza datos estáticos desde `src/data/recipes.js`, por lo que el paso 4 es opcional. Si deseas usar la API mock, necesitarás crear el archivo `db.json` en `src/data/`.
+**Nota:** El proyecto actualmente utiliza datos estáticos desde `src/api/db.json`, por lo que el paso 4 es opcional. Si deseas usar la API mock, necesitarás crear el archivo `db.json` en `src/api/`.
 
 ---
 
