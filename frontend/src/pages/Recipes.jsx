@@ -37,46 +37,48 @@ const Recipes = () => {
     cargarRecetas();
   }, []);
 
-  // Cargar receta detalle desde la API cuando cambia el ID en la URL
-  useEffect(() => {
-    const cargarRecetaDetalle = async () => {
-      const id = searchParams.get('id');
-      if (id) {
-        setLoading(true);
-        try {
-          const receta = await getRecipeById(id);
-          if (receta) {
-            setRecetaDetalle(receta);
-          } else {
-            // Si no se encuentra en la API, buscar en las recetas cargadas en memoria
-            const recetaEncontrada = recetas.find(r => r.id === id);
-            if (recetaEncontrada) {
-              setRecetaDetalle(recetaEncontrada);
-            } else {
-              setRecetaDetalle(null);
-              setError('Receta no encontrada');
-            }
-          }
-        } catch (err) {
-          console.error('Error al cargar receta:', err);
-          // Si falla la API, buscar en las recetas ya cargadas en memoria
-          const recetaEncontrada = recetas.find(r => r.id === id);
-          if (recetaEncontrada) {
-            setRecetaDetalle(recetaEncontrada);
-          } else {
-            setRecetaDetalle(null);
-            setError('No se pudo cargar la receta. Verificá que json-server esté corriendo.');
-          }
-        } finally {
-          setLoading(false);
+  // Lógica unificada para obtener una receta (API primero, luego memoria local)
+  const cargarYSetearReceta = async (id, setStates = true) => {
+    try {
+      if (setStates) setLoading(true);
+      const receta = await getRecipeById(id);
+
+      if (receta) {
+        setRecetaDetalle(receta);
+      } else {
+        // Fallback a memoria local
+        const recetaEncontrada = recetas.find(r => r.id === id);
+        if (recetaEncontrada) {
+          setRecetaDetalle(recetaEncontrada);
+        } else {
+          setRecetaDetalle(null);
+          if (setStates) setError('Receta no encontrada');
         }
+      }
+    } catch (err) {
+      console.error('Error al cargar receta:', err);
+      // Fallback a memoria local en caso de error de API
+      const recetaEncontrada = recetas.find(r => r.id === id);
+      if (recetaEncontrada) {
+        setRecetaDetalle(recetaEncontrada);
       } else {
         setRecetaDetalle(null);
+        if (setStates) setError('No se pudo cargar la receta. Verificá que json-server esté corriendo.');
       }
-    };
+    } finally {
+      if (setStates) setLoading(false);
+    }
+  };
 
-    cargarRecetaDetalle();
-  }, [searchParams, recetas]);
+  // Cargar receta detalle desde la API cuando cambia el ID en la URL
+  useEffect(() => {
+    const id = searchParams.get('id');
+    if (id) {
+      cargarYSetearReceta(id, true);
+    } else {
+      setRecetaDetalle(null);
+    }
+  }, [searchParams, recetas]); // Nota: quitamos la dependencia circular implícita al extraer la lógica
 
   const normalizarTexto = (texto) => {
     return (texto || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
@@ -90,22 +92,8 @@ const Recipes = () => {
 
   const mostrarDetalle = async (id) => {
     setSearchParams({ id });
-    // Intentar cargar desde la API primero
-    try {
-      const receta = await getRecipeById(id);
-      if (receta) {
-        setRecetaDetalle(receta);
-      } else {
-        // Si no se encuentra en la API, buscar en las recetas ya cargadas en memoria
-        const recetaEncontrada = recetas.find(r => r.id === id);
-        setRecetaDetalle(recetaEncontrada || null);
-      }
-    } catch (err) {
-      console.error('Error al cargar receta:', err);
-      // Si falla la API, buscar en las recetas ya cargadas en memoria
-      const recetaEncontrada = recetas.find(r => r.id === id);
-      setRecetaDetalle(recetaEncontrada || null);
-    }
+    // Reusamos la lógica común sin alterar el estado de loading/error global
+    await cargarYSetearReceta(id, false);
   };
 
   const ocultarDetalle = () => {

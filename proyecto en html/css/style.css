@@ -34,6 +34,7 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
 a:hover,
 a:focus {
   text-decoration: underline;
@@ -52,6 +53,7 @@ img {
   margin: 0 auto;
   padding: 32px 20px 80px 20px;
 }
+
 .contenedor.contenedor-chico {
   max-width: 680px;
 }
@@ -115,6 +117,7 @@ img {
   background: var(--color-superficie);
   cursor: pointer;
 }
+
 .boton-menu span {
   width: 22px;
   height: 2px;
@@ -129,15 +132,19 @@ img {
   gap: 24px;
   font-weight: 600;
 }
+
 .lista-menu a {
   text-transform: capitalize;
 }
+
 .lista-menu a.estado-activo {
   color: var(--color-principal);
 }
+
 .estado-oculto {
-  display: none !important;
+  display: none;
 }
+
 .panel-superficie {
   background: var(--color-superficie);
   border: 1px solid var(--color-borde);
@@ -154,11 +161,13 @@ img {
   font-size: 0.95rem;
   color: var(--color-texto-suave);
 }
+
 .pie-enlaces {
   display: flex;
   gap: 12px;
   align-items: center;
 }
+
 .separador {
   color: var(--color-texto-suave);
 }
@@ -185,6 +194,7 @@ img {
   border-color: var(--color-principal);
   box-shadow: 0 6px 16px rgba(77, 209, 131, 0.25);
 }
+
 .boton-principal:hover,
 .boton-principal:focus {
   background: var(--color-principal-oscuro);
@@ -201,12 +211,14 @@ img {
   color: var(--color-texto);
   box-shadow: none;
 }
+
 .boton-contorno:hover,
 .boton-filtro:hover,
 .boton-filtro.estado-activo {
   border-color: var(--color-principal);
   color: var(--color-principal);
 }
+
 .boton-filtro {
   padding: 8px 16px;
   border-radius: 999px;
@@ -224,10 +236,12 @@ img {
   align-items: center;
   box-shadow: 0 34px 48px rgba(0, 0, 0, 0.28);
 }
+
 .texto-portada h1 {
   font-size: 3.1rem;
   margin-bottom: 18px;
 }
+
 .texto-portada p {
   color: var(--color-texto-suave);
   margin-bottom: 22px;
@@ -246,6 +260,7 @@ img {
   font-weight: 600;
   margin-bottom: 18px;
 }
+
 .etiqueta-portada img {
   width: 30px;
   height: 30px;
@@ -263,6 +278,7 @@ img {
   display: grid;
   gap: 24px;
 }
+
 .rejilla-trio {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
@@ -275,6 +291,7 @@ img {
   gap: 12px;
   box-shadow: 0 20px 32px rgba(0, 0, 0, 0.12);
 }
+
 .tarjeta p {
   color: var(--color-texto-suave);
 }
@@ -283,12 +300,14 @@ img {
 .seccion-beneficios {
   margin-bottom: 48px;
 }
+
 .lista-beneficios {
   list-style: none;
   display: grid;
   gap: 14px;
   margin-top: 18px;
 }
+
 .lista-beneficios li {
   background: var(--color-superficie);
   border: 1px solid var(--color-borde);
@@ -305,6 +324,7 @@ img {
   margin-top: 56px;
   box-shadow: 0 30px 42px rgba(0, 0, 0, 0.25);
 }
+
 .contenido-invitacion p {
   color: var(--color-texto-suave);
   margin: 16px 0;
@@ -321,13 +341,16 @@ img {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   box-shadow: 0 28px 40px rgba(0, 0, 0, 0.2);
 }
+
 .presentacion-contenido h1 {
   font-size: 2.4rem;
   margin-bottom: 16px;
 }
+
 .presentacion-contenido p {
   color: var(--color-texto-suave);
 }
+
 .presentacion-imagen img {
   border-radius: 22px;
   box-shadow: 0 20px 36px rgba(0, 0, 0, 0.24);
@@ -342,10 +365,12 @@ img {
   gap: 10px;
   box-shadow: 0 20px 32px rgba(0, 0, 0, 0.14);
 }
+
 .destacado-nosotros h2 {
   color: var(--color-principal);
   font-size: 1.3rem;
 }
+
 .destacado-nosotros ul {
   list-style: none;
   margin: 0;
@@ -354,11 +379,13 @@ img {
   gap: 6px;
   color: var(--color-texto-suave);
 }
+
 .destacado-nosotros li {
   display: flex;
   align-items: flex-start;
   gap: 8px;
 }
+
 .destacado-nosotros li::before {
   content: "\2022";
   color: var(--color-principal);
@@ -374,6 +401,7 @@ img {
   margin-bottom: 32px;
   box-shadow: 0 18px 30px rgba(0, 0, 0, 0.16);
 }
+
 .seccion-enfoque p {
   color: var(--color-texto-suave);
 }
@@ -387,19 +415,23 @@ img {
   margin-bottom: 36px;
   box-shadow: 0 24px 36px rgba(0, 0, 0, 0.18);
 }
+
 .formulario-contacto,
 .formulario-habitos,
 .formulario-calculadora {
   display: grid;
   gap: 16px;
 }
+
 .fila-formulario {
   display: grid;
   gap: 6px;
 }
+
 .fila-formulario label {
   font-weight: 600;
 }
+
 .fila-formulario input,
 .fila-formulario select,
 .fila-formulario textarea,
@@ -412,11 +444,13 @@ img {
   font-size: 1rem;
   transition: border 0.2s ease, box-shadow 0.2s ease;
 }
+
 .fila-formulario textarea {
   resize: vertical;
   min-height: 120px;
   background: var(--color-panel);
 }
+
 .fila-formulario input:focus,
 .fila-formulario select:focus,
 .fila-formulario textarea:focus,
@@ -425,14 +459,17 @@ img {
   border-color: var(--color-principal);
   box-shadow: 0 0 0 3px rgba(77, 209, 131, 0.22);
 }
+
 .campo-error {
   border-color: var(--color-error);
   box-shadow: 0 0 0 3px rgba(255, 122, 122, 0.25);
 }
+
 .campo-error:focus {
   border-color: var(--color-error);
   box-shadow: 0 0 0 3px rgba(255, 122, 122, 0.35);
 }
+
 .mensaje-error {
   min-height: 18px;
   font-size: 0.85rem;
@@ -447,21 +484,25 @@ img {
   margin-bottom: 32px;
   box-shadow: 0 24px 36px rgba(0, 0, 0, 0.18);
 }
+
 .bloque-calculadora {
   display: grid;
   gap: 24px;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   align-items: center;
 }
+
 .texto-calculadora {
   display: grid;
   gap: 18px;
 }
+
 .rejilla-formulario {
   display: grid;
   gap: 16px;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
+
 .resultado {
   min-height: 48px;
   border: 1px solid var(--color-borde);
@@ -473,6 +514,7 @@ img {
   display: flex;
   align-items: center;
 }
+
 .imagen-calculadora img {
   border-radius: 20px;
   box-shadow: 0 20px 32px rgba(0, 0, 0, 0.22);
@@ -486,11 +528,13 @@ img {
   gap: 20px;
   box-shadow: 0 24px 36px rgba(0, 0, 0, 0.2);
 }
+
 .lista-habitos {
   list-style: none;
   display: grid;
   gap: 12px;
 }
+
 .item-habito {
   display: flex;
   justify-content: space-between;
@@ -501,28 +545,34 @@ img {
   border-radius: 16px;
   padding: 12px 16px;
 }
+
 .item-habito label {
   flex: 1;
 }
+
 .item-habito input[type="checkbox"] {
   width: 18px;
   height: 18px;
 }
+
 .acciones-habitos {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   align-items: center;
 }
+
 .acciones-habitos input[type="text"] {
   flex: 1;
   min-width: 220px;
 }
+
 .estado-habitos {
   min-height: 24px;
   color: var(--color-principal);
   font-weight: 600;
 }
+
 .texto-fecha-habitos {
   color: var(--color-texto-suave);
 }
@@ -534,6 +584,7 @@ img {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   margin-top: 32px;
 }
+
 .tarjeta-receta {
   border-radius: 18px;
   padding: 18px;
@@ -541,9 +592,11 @@ img {
   gap: 12px;
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.16);
 }
+
 .tarjeta-receta p {
   color: var(--color-texto-suave);
 }
+
 .tarjeta-receta.estado-oculto {
   display: none;
 }
@@ -556,6 +609,7 @@ img {
   align-items: center;
   margin-top: 28px;
 }
+
 .controles-recetas__buscador {
   background: var(--color-panel);
   border: 1px solid var(--color-borde);
@@ -565,6 +619,7 @@ img {
   flex: 1;
   min-width: 220px;
 }
+
 .controles-recetas__buscador::placeholder {
   color: var(--color-texto-suave);
 }
@@ -577,14 +632,17 @@ img {
   gap: 22px;
   box-shadow: 0 26px 38px rgba(0, 0, 0, 0.2);
 }
+
 .detalle-receta-encabezado {
   display: grid;
   gap: 16px;
 }
+
 .detalle-receta-imagen {
   border-radius: 20px;
   box-shadow: 0 22px 34px rgba(0, 0, 0, 0.22);
 }
+
 .datos-receta {
   display: flex;
   flex-wrap: wrap;
@@ -592,6 +650,7 @@ img {
   color: var(--color-texto-suave);
   font-size: 0.95rem;
 }
+
 .datos-receta span {
   background: rgba(77, 209, 131, 0.12);
   color: var(--color-principal);
@@ -599,11 +658,13 @@ img {
   border-radius: 999px;
   font-weight: 600;
 }
+
 .lista-pasos {
   list-style: none;
   display: grid;
   gap: 14px;
 }
+
 .paso-receta {
   background: rgba(11, 17, 20, 0.8);
   border: 1px solid var(--color-borde);
@@ -612,6 +673,7 @@ img {
   display: grid;
   gap: 6px;
 }
+
 .paso-receta strong {
   color: var(--color-principal);
 }
@@ -625,6 +687,7 @@ img {
   text-align: center;
   box-shadow: 0 24px 36px rgba(0, 0, 0, 0.18);
 }
+
 .pagina-gracias {
   min-height: 100vh;
   display: grid;
