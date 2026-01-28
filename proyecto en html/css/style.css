@@ -676,19 +676,12 @@ img {
 }
 
 /* página de gracias: bloque centrado y estilo consistente */
-.bloque-gracias {
-  border-radius: 22px;
-  padding: 48px 32px;
-  display: grid;
-  gap: 20px;
+/* mensaje de éxito en formularios */
+.mensaje-exito {
+  color: var(--color-principal);
+  font-weight: 600;
+  margin-top: 12px;
   text-align: center;
-  box-shadow: 0 24px 36px rgba(0, 0, 0, 0.18);
-}
-
-.pagina-gracias {
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
 }
 
 /* filtros compactos en barra de recetas */

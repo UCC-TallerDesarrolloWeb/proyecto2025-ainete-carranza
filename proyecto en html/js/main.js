@@ -1,29 +1,11 @@
 ﻿/* iife con arrow function para aislar el código del scope global */
 (() => {
   "use strict";
-
-  /** @function seleccionar
-   * @param {string} selector selector CSS a localizar
-   * @param {Document|Element} [scope] nodo en el que realizar la búsqueda
-   * @returns {Element|null}
-   * @description Selecciona el primer nodo que coincide con el selector dentro del scope indicado.
-   */
-  const seleccionar = (selector, scope) => (scope || document).querySelector(selector);
-
-  /** @function seleccionarTodos
-   * @param {string} selector selector CSS a localizar
-   * @param {Document|Element} [scope] nodo en el que realizar la búsqueda
-   * @returns {Element[]}
-   * @description Devuelve todos los nodos que coinciden con el selector como un array nativo.
-   */
-  const seleccionarTodos = (selector, scope) =>
-    Array.prototype.slice.call((scope || document).querySelectorAll(selector));
-
   /** @function obtenerEl
-   * @param {string} id identificador del elemento buscado
-   * @returns {HTMLElement|null}
-   * @description Obtiene un elemento del DOM a partir de su atributo id.
-   */
+    * @param {string} id identificador del elemento buscado
+    * @returns {HTMLElement|null}
+    * @description Obtiene un elemento del DOM a partir de su atributo id.
+    */
   const obtenerEl = (id) => document.getElementById(id);
 
   /** @function esNumeroPositivo
@@ -41,8 +23,14 @@
    * @returns {HTMLElement|null}
    * @description Devuelve el nodo destinado a mostrar el error asociado al campo indicado.
    */
-  const obtenerMensajeError = (campo) =>
-    campo ? obtenerEl(`error-${campo.id}`) : null;
+  const obtenerMensajeError = (campo) => {
+    if (campo) {
+      return obtenerEl(`error-${campo.id}`);
+    } else {
+      return null;
+    }
+  };
+
 
   /** @function limpiarEstadoCampo
    * @param {HTMLElement|null} campo elemento a limpiar
@@ -83,8 +71,8 @@
    */
   const adjuntarResetCampo = (campo) => {
     if (!campo) return;
-    const evento = campo.tagName === 'SELECT' ? 'change' : 'input';
-    campo.addEventListener(evento, () => {
+
+    campo.addEventListener('change', () => {
       limpiarEstadoCampo(campo);
     });
   };
@@ -122,7 +110,7 @@
 
     /* resalta el enlace de la página actual */
     const paginaActual = window.location.pathname.split('/').pop();
-    seleccionarTodos('a', listaMenu).forEach((enlace) => {
+    Array.from(listaMenu.querySelectorAll('a')).forEach((enlace) => {
       const destino = enlace.getAttribute('href');
       if (destino === paginaActual) {
         enlace.classList.add('estado-activo');
@@ -140,8 +128,14 @@
 
     const barraRecetas = paginaRecetas.querySelector('.barra-recetas');
     const buscadorRecetas = obtenerEl('buscador-recetas');
-    const botonesFiltro = barraRecetas ? seleccionarTodos('.boton.boton-filtro', barraRecetas) : [];
-    const tarjetasReceta = seleccionarTodos('.tarjeta-receta', paginaRecetas);
+    let botonesFiltro = [];
+
+    if (barraRecetas) {
+      botonesFiltro = Array.from(
+        barraRecetas.querySelectorAll('.boton.boton-filtro')
+      );
+    }
+    const tarjetasReceta = Array.from(paginaRecetas.querySelectorAll('.tarjeta-receta'));
     const contenedorDetalle = obtenerEl('detalle-receta');
     const contenedorListado = paginaRecetas.querySelector('.rejilla-recetas');
 
@@ -306,8 +300,9 @@
 
     /** @function ocultarDetalleReceta
      * @returns {void}
-     * @description Restablece la vista de listado quitando el contenido del detalle activo.
+     * @description Vacía el contenido del detalle de receta, lo oculta y vuelve a mostrar el listado y la barra de filtros.
      */
+
     const ocultarDetalleReceta = () => {
       if (contenedorDetalle) {
         contenedorDetalle.innerHTML = '';
@@ -326,10 +321,11 @@
       items.map((item) => `<li>${item}</li>`).join('');
 
     /** @function construirPasos
-     * @param {string[]} pasos colección de pasos en orden
-     * @returns {string}
-     * @description Genera el HTML de la lista ordenada de pasos con numeración automática.
-     */
+ * @param {string[]} pasos Lista ordenada de instrucciones de la receta.
+ * @returns {string}
+ * @description Genera el HTML de los pasos de una receta en forma de lista,
+ * numerando cada paso automáticamente y aplicando la clase visual correspondiente.
+ */
     const construirPasos = (pasos) =>
       pasos
         .map(
@@ -337,6 +333,7 @@
             `<li class="paso-receta"><strong>${indice + 1}.</strong> ${paso}</li>`
         )
         .join('');
+
 
     /** @function mostrarDetalleReceta
      * @param {string} id identificador de la receta a mostrar
@@ -381,21 +378,26 @@
       contenedorDetalle.classList.remove('estado-oculto');
       contenedorListado.classList.add('estado-oculto');
       if (barraRecetas) barraRecetas.classList.add('estado-oculto');
-      paginaRecetas.scrollIntoView({ behavior: 'smooth', block: 'start' });
     };
-
     /** @function obtenerIdRecetaDesdeUrl
      * @returns {string|null}
-     * @description Lee el identificador de receta desde la URL (query o hash).
+     * @description Obtiene el identificador de una receta leyendo la URL.
+     * Primero lo busca en los parámetros (?id=...), y si no existe,
+     * lo obtiene desde el hash (#...). Devuelve null si no se encuentra.
      */
+
     const obtenerIdRecetaDesdeUrl = () => {
-      const parametros = new URLSearchParams(window.location.search);
-      let id = parametros.get('id');
-      if (!id && window.location.hash) {
-        id = window.location.hash.replace('#', '');
+      let id = null;
+
+      if (window.location.search) {
+        const parametros = new URLSearchParams(window.location.search);
+        id = parametros.get('id');
       }
+
       return id;
     };
+
+
 
     /** @function actualizarVistaRecetas
      * @returns {void}
@@ -419,14 +421,12 @@
       tarjetasReceta.forEach((tarjeta) => {
         const categorias = tarjeta.getAttribute('data-categorias') || '';
         const nombre =
-          tarjeta.getAttribute('data-nombre') || tarjeta.querySelector('h3').textContent;
+          tarjeta.querySelector('h3').textContent;
 
         const coincideFiltro =
-          filtroActivo === 'todas' || categorias.indexOf(filtroActivo) !== -1; /* se mantiene para compatibilidad amplia */
-
+          filtroActivo === 'todas' || categorias.indexOf(filtroActivo) !== -1;
         const coincideBusqueda =
-          terminoBusqueda === '' || normalizarTexto(nombre).indexOf(terminoBusqueda) !== -1;
-
+          terminoBusqueda === '' || normalizarTexto(nombre).includes(terminoBusqueda);
         if (coincideFiltro && coincideBusqueda) {
           tarjeta.classList.remove('estado-oculto');
         } else {
@@ -456,13 +456,12 @@
     /* primer render con estado inicial */
     aplicarFiltros();
     actualizarVistaRecetas();
-    window.addEventListener('hashchange', actualizarVistaRecetas);
-    window.addEventListener('popstate', actualizarVistaRecetas);
+
   };
 
   /** @function iniciarContacto
    * @returns {void}
-   * @description Configura la validación del formulario de contacto y el envío con redirección a la página de agradecimiento.
+   * @description Valida lo básico del formulario solo al enviar (submit). Si todo está OK, redirige a gracias.html?ok=1.
    */
   const iniciarContacto = () => {
     const formulario = obtenerEl('formulario-contacto');
@@ -473,88 +472,42 @@
     const motivo = obtenerEl('motivo-contacto');
     const mensaje = obtenerEl('mensaje-contacto');
 
-    [nombre, correo, motivo, mensaje].forEach(adjuntarResetCampo);
-
-    if (nombre) {
-      nombre.addEventListener('input', () => {
-        const valor = nombre.value.trim();
-        if (!valor) {
-          limpiarEstadoCampo(nombre);
-          return;
-        }
-        if (esNombreValido(valor.replace(/\s+/g, ' '))) {
-          limpiarEstadoCampo(nombre);
-        }
-      });
-    }
-
-    const patronCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
     formulario.addEventListener('submit', (evento) => {
       evento.preventDefault();
-
       if (!(nombre && correo && motivo && mensaje)) return;
 
-      const valorNombre = nombre.value.trim().replace(/\s+/g, ' ');
-      if (!valorNombre) {
-        marcarCampoError(nombre, 'Ingresá tu nombre.');
-        return;
-      }
-      if (!esNombreValido(valorNombre)) {
-        marcarCampoError(nombre, 'Ingresá solo letras y espacios.');
-        return;
-      }
-      nombre.value = valorNombre;
-      limpiarEstadoCampo(nombre);
+      // limpiar errores previos (básico)
+      [nombre, correo, motivo, mensaje].forEach(limpiarEstadoCampo);
+
+      const valorNombre = nombre.value.trim();
+      if (!valorNombre) return marcarCampoError(nombre, 'Ingresá tu nombre.');
 
       const valorCorreo = correo.value.trim();
-      if (!valorCorreo) {
-        marcarCampoError(correo, 'Ingresá tu correo electrónico.');
-        return;
-      }
-      if (!patronCorreo.test(valorCorreo)) {
-        marcarCampoError(correo, 'Ingresá un correo válido.');
-        return;
-      }
-      correo.value = valorCorreo;
-      limpiarEstadoCampo(correo);
+      if (!valorCorreo) return marcarCampoError(correo, 'Ingresá tu correo.');
 
-      if (!motivo.value) {
-        marcarCampoError(motivo, 'Seleccioná un motivo.');
-        return;
+      // validación mínima de email (solo que tenga "@")
+      if (!valorCorreo.includes('@')) {
+        return marcarCampoError(correo, 'Ingresá un correo válido.');
       }
-      limpiarEstadoCampo(motivo);
+
+      if (!motivo.value) return marcarCampoError(motivo, 'Seleccioná un motivo.');
 
       const valorMensaje = mensaje.value.trim();
-      if (valorMensaje.length < 10) {
-        marcarCampoError(
-          mensaje,
-          'Contanos un poco más en el mensaje (mínimo 10 caracteres).'
-        );
-        return;
-      }
-      mensaje.value = valorMensaje;
-      limpiarEstadoCampo(mensaje);
+      if (!valorMensaje) return marcarCampoError(mensaje, 'Ingresá un mensaje.');
 
-      /* redirección con querystring para confirmar envío */
-      const parametros = new URLSearchParams({ ok: '1' });
-      window.location.href = `gracias.html?${parametros.toString()}`;
+      // si todo está OK → mostrar mensaje de éxito y limpiar formulario
+      const mensajeExito = obtenerEl('mensaje-exito-contacto');
+      if (mensajeExito) {
+        mensajeExito.classList.remove('estado-oculto');
+        formulario.reset();
+        setTimeout(() => {
+          mensajeExito.classList.add('estado-oculto');
+        }, 5000);
+      }
     });
   };
 
-  /** @function iniciarGracias
-   * @returns {void}
-   * @description Ajusta el mensaje de la página de agradecimiento cuando el acceso no proviene del formulario.
-   */
-  const iniciarGracias = () => {
-    const mensaje = obtenerEl('mensaje-gracias');
-    if (!mensaje) return;
 
-    const consulta = new URLSearchParams(window.location.search);
-    if (consulta.get('ok') !== '1') {
-      mensaje.textContent = 'Ingresá desde el formulario para recibir novedades personalizadas.';
-    }
-  };
 
   /** @function iniciarSitio
    * @returns {void}
@@ -564,7 +517,6 @@
     iniciarMenu();
     iniciarRecetas();
     iniciarContacto();
-    iniciarGracias();
   };
 
   /* espera al dom si aún está cargando; si no, inicia de inmediato */
@@ -574,11 +526,4 @@
     iniciarSitio();
   }
 
-  /* api mínima expuesta para reutilizar en otros scripts o depurar */
-  window.utilesNf = {
-    seleccionar,
-    seleccionarTodos,
-    obtenerEl,
-    esNumeroPositivo
-  };
 })();

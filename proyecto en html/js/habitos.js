@@ -11,9 +11,9 @@
    * @returns {HTMLElement|null}
    * @description Obtiene un nodo del DOM según su atributo id.
    */
- function obtenerEl(id) {
-   return document.getElementById(id);
- }
+  function obtenerEl(id) {
+    return document.getElementById(id);
+  }
 
   /* lista base de hábitos (con tildes corregidas) */
   var habitosIniciales = [
@@ -27,7 +27,7 @@
    * @returns {Array<Object>}
    * @description Crea una copia superficial de los hábitos base marcándolos como incompletos.
    */
- function clonarHabitos() {
+  function clonarHabitos() {
     return habitosIniciales.map(function (habito) {
       var copia = {};
       for (var clave in habito) {
@@ -44,7 +44,7 @@
    * @returns {Array<Object>}
    * @description Recupera los hábitos guardados en localStorage o devuelve la copia base si no existen.
    */
- function cargarHabitos() {
+  function cargarHabitos() {
     try {
       var guardados = localStorage.getItem(claveHabitos);
       if (guardados) {
@@ -61,7 +61,7 @@
    * @returns {void}
    * @description Guarda los hábitos y la fecha de actualización en localStorage.
    */
- function guardarHabitos(datos) {
+  function guardarHabitos(datos) {
     localStorage.setItem(claveHabitos, JSON.stringify(datos));
     localStorage.setItem(claveFecha, new Date().toISOString());
   }
@@ -70,7 +70,7 @@
    * @returns {void}
    * @description Actualiza el texto con la última fecha de guardado o “Sin guardar” si no existe.
    */
- function mostrarFecha() {
+  function mostrarFecha() {
     var elementoFecha = obtenerEl("fecha-habitos");
     if (!elementoFecha) return;
 
@@ -89,7 +89,7 @@
    * @returns {void}
    * @description Dibuja la lista de hábitos con sus casillas y acciones correspondientes en pantalla.
    */
- function mostrarHabitos(datos) {
+  function mostrarHabitos(datos) {
     var lista = obtenerEl("lista-habitos");
     if (!lista) return;
 
@@ -142,7 +142,7 @@
    * @returns {void}
    * @description Escribe mensajes transitorios bajo el formulario para retroalimentar al usuario.
    */
- function mostrarEstado(texto) {
+  function mostrarEstado(texto) {
     var estado = obtenerEl("estado-habitos");
     if (estado) estado.textContent = texto;
   }
@@ -151,7 +151,7 @@
    * @returns {void}
    * @description Inicializa la pantalla de hábitos: carga datos, renderiza la lista y prepara los eventos de interacción.
    */
- function iniciarHabitos() {
+  function iniciarHabitos() {
     var formulario = obtenerEl("formulario-habitos");
     var botonAgregar = obtenerEl("boton-agregar-habito");
     var entradaHabito = obtenerEl("entrada-habito");
