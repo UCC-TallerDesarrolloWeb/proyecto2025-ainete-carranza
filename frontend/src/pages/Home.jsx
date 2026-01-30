@@ -8,7 +8,7 @@ const Home = () => {
 
   return (
     <main className="contenedor">
-      <section className="portada" id="seccion-portada">
+      <section className="portada panel-superficie">
         <div className="texto-portada">
           <div className="etiqueta-portada">
             <img src="/logo.png" alt="emblema nutrifit+" />
@@ -23,12 +23,12 @@ const Home = () => {
             explorar calculadoras
           </Button>
         </div>
-        <figure className="imagen-portada">
-          <img
-            src="/logo-ladotexto.png"
-            alt="logotipo nutrifit+ con texto"
-          />
-        </figure>
+        <div className="imagen-portada tarjeta-branding">
+          <div className="contenido-branding">
+            <img src="/logo.png" alt="logo nutrifit" />
+            <span>NutriFit+</span>
+          </div>
+        </div>
       </section>
 
       <section
@@ -39,7 +39,7 @@ const Home = () => {
           todo lo que necesitás para una vida equilibrada
         </h2>
 
-        <div className="rejilla rejilla-trio">
+        <div className="rejilla rejilla-duo">
           <Card>
             <h3>calculadoras intuitivas</h3>
             <p>

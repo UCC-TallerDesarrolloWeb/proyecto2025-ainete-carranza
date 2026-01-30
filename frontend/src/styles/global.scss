@@ -13,7 +13,6 @@ body {
   color: var(--color-texto);
   font-family: var(--font-main);
   line-height: 1.6;
-  overflow-x: hidden;
 }
 
 a {
@@ -38,8 +37,6 @@ img {
   height: 1px;
   padding: 0;
   margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
   border: 0;
 }
 

@@ -92,7 +92,7 @@ const Calculators = () => {
 
     if (Object.keys(errors).length > 0) {
       setImcErrors(errors);
-      // Focus first error field
+
       const firstErrorField = Object.keys(errors)[0];
       const errorElement = document.getElementById(`${firstErrorField}-imc`);
       if (errorElement) errorElement.focus();
