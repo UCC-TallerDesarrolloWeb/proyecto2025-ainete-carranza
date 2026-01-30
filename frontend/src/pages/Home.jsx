@@ -50,16 +50,7 @@ const Home = () => {
               calcular ahora
             </Button>
           </Card>
-          <Card>
-            <h3>hábitos que suman</h3>
-            <p>
-              acomodá tu rutina con hábitos simples que se guardan en tu
-              dispositivo y podés ajustar a diario.
-            </p>
-            <Button variant="outline" onClick={() => navigate('/habitos')}>
-              ver hábitos
-            </Button>
-          </Card>
+
           <Card>
             <h3>recetas reales</h3>
             <p>
@@ -89,7 +80,7 @@ const Home = () => {
             sumate a una comunidad que elige sentirse mejor
           </h2>
           <p>
-            creá tu lista de hábitos, calculá tu plan diario y escribinos para
+            calculá tu plan diario y escribinos para
             sumarte a los talleres de nutrifit+. estamos para acompañarte.
           </p>
           <Button variant="primary" onClick={() => navigate('/nosotros')}>

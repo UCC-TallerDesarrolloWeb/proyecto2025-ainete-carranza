@@ -71,8 +71,9 @@ const About = () => {
       return;
     }
 
-    // Redirigir a página de gracias
-    navigate('/gracias?ok=1');
+    // Mensaje de éxito y redirigir a home
+    alert('Mensaje enviado con éxito.');
+    navigate('/');
   };
 
   return (

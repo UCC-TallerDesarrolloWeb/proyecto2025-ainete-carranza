@@ -414,7 +414,6 @@ img {
 }
 
 .formulario-contacto,
-.formulario-habitos,
 .formulario-calculadora {
   display: grid;
   gap: 16px;
@@ -431,8 +430,7 @@ img {
 
 .fila-formulario input,
 .fila-formulario select,
-.fila-formulario textarea,
-.acciones-habitos input[type="text"] {
+.fila-formulario textarea {
   background: var(--color-panel);
   border: 1px solid var(--color-borde);
   border-radius: 12px;
@@ -450,8 +448,7 @@ img {
 
 .fila-formulario input:focus,
 .fila-formulario select:focus,
-.fila-formulario textarea:focus,
-.acciones-habitos input[type="text"]:focus {
+.fila-formulario textarea:focus {
   outline: none;
   border-color: var(--color-principal);
   box-shadow: 0 0 0 3px rgba(77, 209, 131, 0.22);
@@ -517,62 +514,9 @@ img {
   box-shadow: 0 20px 32px rgba(0, 0, 0, 0.22);
 }
 
-/* hábitos: panel, items y estado/fecha */
-.panel-habitos {
-  border-radius: 22px;
-  padding: 32px;
-  display: grid;
-  gap: 20px;
-  box-shadow: 0 24px 36px rgba(0, 0, 0, 0.2);
-}
 
-.lista-habitos {
-  list-style: none;
-  display: grid;
-  gap: 12px;
-}
 
-.item-habito {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  background: rgba(11, 17, 20, 0.8);
-  border: 1px solid var(--color-borde);
-  border-radius: 16px;
-  padding: 12px 16px;
-}
 
-.item-habito label {
-  flex: 1;
-}
-
-.item-habito input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-}
-
-.acciones-habitos {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: center;
-}
-
-.acciones-habitos input[type="text"] {
-  flex: 1;
-  min-width: 220px;
-}
-
-.estado-habitos {
-  min-height: 24px;
-  color: var(--color-principal);
-  font-weight: 600;
-}
-
-.texto-fecha-habitos {
-  color: var(--color-texto-suave);
-}
 
 /* rejilla de tarjetas de recetas + estados */
 .rejilla-recetas {

@@ -1,5 +1,6 @@
 ﻿/* iife para no contaminar el scope global */
-(function () {
+
+(() => {
   "use strict";
 
   /** @function obtenerCampo
@@ -7,41 +8,30 @@
    * @returns {HTMLElement|null}
    * @description Obtiene un nodo del DOM a través de su atributo id.
    */
-  function obtenerCampo(id) {
+  const obtenerCampo = (id) => {
     return document.getElementById(id);
-  }
-
-  /** @function leerNumero
-   * @param {string} id identificador del input a leer
-   * @returns {number}
-   * @description Convierte el valor de un input numérico a número flotante aceptando punto o coma.
-   */
-  function leerNumero(id) {
-    const campo = obtenerCampo(id);
-    if (!campo) return NaN;
-    return parseFloat(String(campo.value).replace(",", "."));
-  }
+  };
 
   /** @function esValorPositivo
    * @param {number} valor número a validar
    * @returns {boolean}
    * @description Indica si el valor es finito y mayor que cero.
    */
-  function esValorPositivo(valor) {
+  const esValorPositivo = (valor) => {
     return typeof valor === "number" && Number.isFinite(valor) && valor > 0;
-  }
+  };
 
   /** @function obtenerCategoriaImc
    * @param {number} imc índice de masa corporal calculado
   * @returns {string}
   * @description Devuelve la categoría OMS correspondiente al valor de IMC.
   */
-  function obtenerCategoriaImc(imc) {
+  const obtenerCategoriaImc = (imc) => {
     if (imc < 18.5) return "bajo peso";
     if (imc < 25) return "peso saludable";
     if (imc < 30) return "sobrepeso";
     return "obesidad";
-  }
+  };
 
   /** @function calcularImcInterno
    * @param {number} kg peso en kilogramos
@@ -49,20 +39,20 @@
    * @returns {number}
    * @description Calcula el IMC redondeado a dos decimales a partir del peso y la altura.
    */
-  function calcularImcInterno(kg, cm) {
+  const calcularImcInterno = (kg, cm) => {
     const metros = cm / 100;
     if (!esValorPositivo(metros)) return NaN; /* evita división por cero */
     return parseFloat((kg / (metros * metros)).toFixed(2));
-  }
+  };
 
   /** @function calcularAguaInterno
    * @param {number} kg peso en kilogramos
    * @returns {number}
    * @description Calcula los litros sugeridos de agua usando 35 ml por kilogramo.
    */
-  function calcularAguaInterno(kg) {
+  const calcularAguaInterno = (kg) => {
     return parseFloat(((kg * 35) / 1000).toFixed(2));
-  }
+  };
 
   /** @function calcularCaloriasInterno
    * @param {string} sexo sexo declarado por la persona
@@ -73,11 +63,14 @@
    * @returns {number}
    * @description Calcula el gasto calórico estimado aplicando la fórmula de Mifflin-St Jeor y el factor de actividad.
    */
-  function calcularCaloriasInterno(sexo, actividad, kg, cm, edad) {
-    const base =
-      sexo === "femenino"
-        ? 10 * kg + 6.25 * cm - 5 * edad - 161
-        : 10 * kg + 6.25 * cm - 5 * edad + 5;
+  const calcularCaloriasInterno = (sexo, actividad, kg, cm, edad) => {
+    let base;
+
+    if (sexo === "femenino") {
+      base = 10 * kg + 6.25 * cm - 5 * edad - 161;
+    } else {
+      base = 10 * kg + 6.25 * cm - 5 * edad + 5;
+    }
 
     const multiplicadores = {
       sedentario: 1.2,
@@ -86,9 +79,16 @@
       intenso: 1.725,
     };
 
-    const factor = multiplicadores[actividad] ?? multiplicadores.sedentario;
+    let factor;
+
+    if (multiplicadores[actividad]) {
+      factor = multiplicadores[actividad];
+    } else {
+      factor = multiplicadores.sedentario;
+    }
+
     return Math.round(base * factor);
-  }
+  };
 
   /** @function mostrarMensaje
    * @param {string} id identificador del nodo de salida
@@ -96,32 +96,32 @@
    * @returns {void}
    * @description Escribe un mensaje en el nodo indicado sin usar alertas.
    */
-  function mostrarMensaje(id, texto) {
+  const mostrarMensaje = (id, texto) => {
     const salida = obtenerCampo(id);
     if (salida) salida.textContent = texto;
-  }
+  };
 
   /** @function obtenerMensajeError
    * @param {string} idCampo identificador del campo asociado
    * @returns {HTMLElement|null}
    * @description Devuelve el elemento destinado a mostrar el mensaje de error del campo.
    */
-  function obtenerMensajeError(idCampo) {
+  const obtenerMensajeError = (idCampo) => {
     return document.getElementById("error-" + idCampo);
-  }
+  };
 
   /** @function limpiarErrorCampo
    * @param {string} idCampo identificador del campo a limpiar
    * @returns {void}
    * @description Quita la clase de error del campo y borra su mensaje asociado, si existe.
    */
-  function limpiarErrorCampo(idCampo) {
+  const limpiarErrorCampo = (idCampo) => {
     const campo = obtenerCampo(idCampo);
     if (!campo) return;
     campo.classList.remove("campo-error");
     const destino = obtenerMensajeError(idCampo);
     if (destino) destino.textContent = "";
-  }
+  };
 
   /** @function aplicarErrorCampo
    * @param {string} idCampo identificador del campo con error
@@ -129,7 +129,7 @@
    * @returns {null}
    * @description Limpia el valor del campo, aplica la clase de error, muestra el mensaje y enfoca el elemento.
    */
-  function aplicarErrorCampo(idCampo, mensaje) {
+  const aplicarErrorCampo = (idCampo, mensaje) => {
     const campo = obtenerCampo(idCampo);
     if (!campo) return null;
     if (Object.prototype.hasOwnProperty.call(campo, "value")) {
@@ -143,29 +143,29 @@
     if (destino) destino.textContent = mensaje;
     campo.focus();
     return null;
-  }
+  };
 
   /** @function registrarResetCampo
    * @param {string} idCampo identificador del campo a inicializar
    * @returns {void}
    * @description Registra eventos para quitar el estado de error cuando el usuario modifica el campo.
    */
-  function registrarResetCampo(idCampo) {
+  const registrarResetCampo = (idCampo) => {
     const campo = obtenerCampo(idCampo);
     if (!campo) return;
-    const handler = function () {
+    const handler = () => {
       limpiarErrorCampo(idCampo);
     };
     campo.addEventListener("input", handler);
     campo.addEventListener("change", handler);
-  }
+  };
 
   /** @function validarEdadCampo
    * @param {string} idCampo identificador del campo de edad
    * @returns {number|null}
    * @description Valida que la edad sea un entero positivo dentro del rango 1-120.
    */
-  function validarEdadCampo(idCampo) {
+  const validarEdadCampo = (idCampo) => {
     const campo = obtenerCampo(idCampo);
     if (!campo) return null;
     const crudo = String(campo.value || "").trim();
@@ -185,65 +185,84 @@
     limpiarErrorCampo(idCampo);
     campo.value = String(numero);
     return numero;
-  }
+  };
 
   /** @function validarPesoCampo
    * @param {string} idCampo identificador del campo de peso
    * @returns {number|null}
-   * @description Valida el peso ingresado (hasta tres cifras, admite decimales con punto).
+   * @description Valida el peso ingresado (acepta decimales con punto y rango lógico).
    */
-  function validarPesoCampo(idCampo) {
+  const validarPesoCampo = (idCampo) => {
     const campo = obtenerCampo(idCampo);
     if (!campo) return null;
+
     const crudo = String(campo.value || "").trim();
+
     if (!crudo) {
       return aplicarErrorCampo(idCampo, "ingresá tu peso.");
     }
-    if (crudo.indexOf(",") !== -1) {
+
+    if (crudo.includes(",")) {
       return aplicarErrorCampo(idCampo, "usá punto en lugar de coma.");
     }
-    if (!/^\d{1,3}(\.\d{1,2})?$/.test(crudo)) {
-      return aplicarErrorCampo(idCampo, "ingresá un peso válido (0-999).");
-    }
+
     const numero = parseFloat(crudo);
-    if (!(numero > 0 && numero <= 999)) {
+
+    if (isNaN(numero)) {
+      return aplicarErrorCampo(idCampo, "ingresá un peso numérico.");
+    }
+
+    if (numero <= 0 || numero > 999) {
       return aplicarErrorCampo(
         idCampo,
         "ingresá un peso dentro de 0 a 999 kg."
       );
     }
+
     limpiarErrorCampo(idCampo);
-    campo.value = crudo;
+    campo.value = String(numero);
     return numero;
-  }
+  };
+
 
   /** @function validarAlturaCampo
-   * @param {string} idCampo identificador del campo de altura
-   * @returns {number|null}
-   * @description Valida la altura en metros (menor a 3) y la devuelve convertida a centímetros.
-   */
-  function validarAlturaCampo(idCampo) {
+ * @param {string} idCampo identificador del campo de altura
+ * @returns {number|null}
+ * @description Valida la altura en metros (menor a 3) y la devuelve en centímetros.
+ */
+  const validarAlturaCampo = (idCampo) => {
     const campo = obtenerCampo(idCampo);
     if (!campo) return null;
+
     const crudo = String(campo.value || "").trim();
+
     if (!crudo) {
       return aplicarErrorCampo(idCampo, "ingresá tu altura.");
     }
+
     const reemplazado = crudo.replace(",", ".");
-    if (!/^\d+(\.\d+)?$/.test(reemplazado)) {
+
+    const numero = parseFloat(reemplazado);
+
+    if (isNaN(numero)) {
       return aplicarErrorCampo(
         idCampo,
         "ingresá tu altura en metros. ejemplo: 1.70"
       );
     }
-    const numero = parseFloat(reemplazado);
-    if (!(numero > 0 && numero < 3)) {
-      return aplicarErrorCampo(idCampo, "la altura debe ser menor a 3 metros.");
+
+    if (numero <= 0 || numero >= 3) {
+      return aplicarErrorCampo(
+        idCampo,
+        "la altura debe ser mayor a 0 y menor a 3 metros."
+      );
     }
+
     limpiarErrorCampo(idCampo);
     campo.value = reemplazado;
-    return numero * 100; /* devuelve centímetros para los cálculos internos */
-  }
+    return numero * 100;
+  };
+
 
   /** @function validarSeleccionCampo
    * @param {string} idCampo identificador del select a validar
@@ -251,7 +270,7 @@
    * @returns {string}
    * @description Comprueba que el select tenga una opción elegida y devuelve su valor.
    */
-  function validarSeleccionCampo(idCampo, mensajeError) {
+  const validarSeleccionCampo = (idCampo, mensajeError) => {
     const campo = obtenerCampo(idCampo);
     if (!campo) return "";
     if (!campo.value) {
@@ -260,7 +279,7 @@
     }
     limpiarErrorCampo(idCampo);
     return campo.value;
-  }
+  };
 
   /** @function mostrarError
    * @param {string} texto mensaje descriptivo del error
@@ -268,13 +287,12 @@
    * @returns {void}
    * @description Muestra un error general o enfoca el campo problemático aplicando el mensaje correspondiente.
    */
-  function mostrarError(texto, idCampoAFocar) {
+  const mostrarError = (texto, idCampoAFocar) => {
     if (idCampoAFocar) {
       aplicarErrorCampo(idCampoAFocar, texto);
       return;
     }
-    if (typeof alert === "function") alert(texto);
-  }
+  };
 
   /* registra listeners para limpiar errores al corregir */
   [
@@ -293,7 +311,7 @@
    * @returns {void}
    * @description Valida los campos del formulario de IMC y muestra el resultado con su categoría.
    */
-  window.calcularImc = function () {
+  window.calcularImc = () => {
     const peso = validarPesoCampo("peso-imc");
     if (peso === null) return;
 
@@ -319,7 +337,7 @@
    * @returns {void}
    * @description Valida el peso ingresado y calcula la hidratación sugerida en litros.
    */
-  window.calcularAgua = function () {
+  window.calcularAgua = () => {
     const peso = validarPesoCampo("peso-agua");
     if (peso === null) return;
     const litros = calcularAguaInterno(peso);
@@ -330,7 +348,7 @@
    * @returns {void}
    * @description Valida los campos del formulario y estima las calorías diarias según Mifflin-St Jeor.
    */
-  window.calcularCalorias = function () {
+  window.calcularCalorias = () => {
     const sexo = validarSeleccionCampo("sexo-calorias", "seleccioná tu sexo.");
     if (!sexo) return;
 

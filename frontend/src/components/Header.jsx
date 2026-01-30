@@ -66,15 +66,7 @@ const Header = () => {
               calculadoras
             </a>
           </li>
-          <li>
-            <a
-              href="/habitos"
-              onClick={(e) => { e.preventDefault(); navigate('/habitos'); }}
-              className={isActive('/habitos') ? 'estado-activo' : ''}
-            >
-              hábitos
-            </a>
-          </li>
+
           <li>
             <a
               href="/recetas"
