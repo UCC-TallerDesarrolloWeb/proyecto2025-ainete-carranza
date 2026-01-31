@@ -10,9 +10,10 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const isActive = (path) => {
-    if (path === '/') return location.pathname === '/' || location.pathname === '/home';
+    if (path === '/') return location.pathname === '/home';
     return location.pathname === path;
   };
+
 
   useEffect(() => {
     setMenuOpen(false);

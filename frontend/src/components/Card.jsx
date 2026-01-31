@@ -6,15 +6,19 @@ import "@styles/Card.scss";
  * @param {React.ReactNode} props.children - Contenido de la tarjeta
  * @param {string} props.className - Clases adicionales
  */
-const Card = ({ children, className = '', ...props }) => {
-  const classes = `tarjeta panel-superficie ${className}`.trim();
+const Card = (props) => {
+  const children = props.children;
+  const className = props.className || '';
+
+  const classes = 'tarjeta panel-superficie ' + className;
 
   return (
-    <article className={classes} {...props}>
+    <article className={classes}>
       {children}
     </article>
   );
 };
 
 export default Card;
+
 

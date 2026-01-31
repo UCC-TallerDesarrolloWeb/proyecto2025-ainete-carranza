@@ -9,17 +9,30 @@ import "@styles/Button.scss";
  * @param {React.ReactNode} props.children - Contenido del botón
  * @param {string} props.className - Clases adicionales
  */
-const Button = ({ variant = 'primary', type = 'button', onClick, children, className = '', ...props }) => {
-  const baseClass = 'boton';
-  const variantClass = `boton-${variant === 'outline' ? 'contorno' : variant === 'filter' ? 'filtro' : 'principal'}`;
-  const classes = `${baseClass} ${variantClass} ${className}`.trim();
+const Button = (props) => {
+  const variant = props.variant || 'primary';
+  const type = props.type || 'button';
+  const onClick = props.onClick;
+  const children = props.children;
+  const className = props.className || '';
+
+  let variantClass = 'boton-principal';
+
+  if (variant === 'outline') {
+    variantClass = 'boton-contorno';
+  }
+
+  if (variant === 'filter') {
+    variantClass = 'boton-filtro';
+  }
+
+  const classes = 'boton ' + variantClass + ' ' + className;
 
   return (
     <button
       type={type}
       className={classes}
       onClick={onClick}
-      {...props}
     >
       {children}
     </button>
@@ -27,4 +40,5 @@ const Button = ({ variant = 'primary', type = 'button', onClick, children, class
 };
 
 export default Button;
+
 
