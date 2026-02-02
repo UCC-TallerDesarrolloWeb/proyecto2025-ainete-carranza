@@ -21,32 +21,62 @@ const Calculators = () => {
   // Validación de edad (0-120, entero positivo)
   const validateAge = (value) => {
     const trimmed = value.trim();
-    if (!trimmed) return { valid: false, error: 'Ingresá tu edad.' };
-    if (!/^\d+$/.test(trimmed)) return { valid: false, error: 'Ingresá una edad sin puntos ni comas.' };
-    const num = parseInt(trimmed, 10);
-    if (num < 1 || num > 120) return { valid: false, error: 'Ingresá una edad entre 1 y 120.' };
+
+    if (trimmed === '') {
+      return { valid: false, error: 'Ingresá tu edad.' };
+    }
+
+    const num = Number(trimmed);
+
+    if (isNaN(num)) {
+      return { valid: false, error: 'La edad debe ser un número.' };
+    }
+
+    if (num < 1 || num > 120) {
+      return { valid: false, error: 'Ingresá una edad entre 1 y 120.' };
+    }
+
     return { valid: true, value: num };
   };
 
-  // Validación de peso (0-999, máximo 3 dígitos, sin coma)
   const validateWeight = (value) => {
-    const trimmed = value.trim();
-    if (!trimmed) return { valid: false, error: 'Ingresá tu peso.' };
-    if (trimmed.includes(',')) return { valid: false, error: 'Usá punto en lugar de coma.' };
-    if (!/^\d{1,3}(\.\d{1,2})?$/.test(trimmed)) return { valid: false, error: 'Ingresá un peso válido (0-999).' };
-    const num = parseFloat(trimmed);
-    if (num <= 0 || num > 999) return { valid: false, error: 'Ingresá un peso dentro de 0 a 999 kg.' };
+    const trimmed = value.trim().replace(',', '.');
+
+    if (trimmed === '') {
+      return { valid: false, error: 'Ingresá tu peso.' };
+    }
+
+    const num = Number(trimmed);
+
+    if (isNaN(num)) {
+      return { valid: false, error: 'El peso debe ser un número.' };
+    }
+
+    if (num <= 0 || num > 999) {
+      return { valid: false, error: 'Ingresá un peso entre 0 y 999 kg.' };
+    }
+
     return { valid: true, value: num };
   };
 
-  // Validación de altura (menor a 3 metros)
+
   const validateHeight = (value) => {
-    const trimmed = value.trim();
-    if (!trimmed) return { valid: false, error: 'Ingresá tu altura.' };
-    const replaced = trimmed.replace(',', '.');
-    if (!/^\d+(\.\d+)?$/.test(replaced)) return { valid: false, error: 'Ingresá tu altura en metros. Ejemplo: 1.70' };
-    const num = parseFloat(replaced);
-    if (num <= 0 || num >= 3) return { valid: false, error: 'La altura debe ser menor a 3 metros.' };
+    const trimmed = value.trim().replace(',', '.');
+
+    if (trimmed === '') {
+      return { valid: false, error: 'Ingresá tu altura.' };
+    }
+
+    const num = Number(trimmed);
+
+    if (isNaN(num)) {
+      return { valid: false, error: 'La altura debe ser un número.' };
+    }
+
+    if (num <= 0 || num >= 3) {
+      return { valid: false, error: 'La altura debe ser menor a 3 metros.' };
+    }
+
     return { valid: true, value: num };
   };
 
@@ -169,9 +199,20 @@ const Calculators = () => {
     setCaloriasErrors({});
 
     const alturaCm = alturaValidation.value * 100;
-    const base = caloriasData.sexo === 'femenino'
-      ? 10 * pesoValidation.value + 6.25 * alturaCm - 5 * edadValidation.value - 161
-      : 10 * pesoValidation.value + 6.25 * alturaCm - 5 * edadValidation.value + 5;
+
+    let base = 0;
+
+    if (caloriasData.sexo === 'femenino') {
+      base = 10 * pesoValidation.value
+        + 6.25 * alturaCm
+        - 5 * edadValidation.value
+        - 161;
+    } else {
+      base = 10 * pesoValidation.value
+        + 6.25 * alturaCm
+        - 5 * edadValidation.value
+        + 5;
+    }
 
     const multiplicadores = {
       sedentario: 1.2,

@@ -87,29 +87,15 @@
    */
   const esNombreValido = (valor) => patronNombreContacto.test(valor);
 
-  /** @function iniciarMenu
+  /** @function marcarEnlaceActivo
    * @returns {void}
-   * @description Configura el comportamiento del menú principal: toggle móvil, cierre externo y marcado del enlace activo.
+   * @description Resalta el enlace del menú que corresponde a la página actual.
    */
-  const iniciarMenu = () => {
+  const marcarEnlaceActivo = () => {
     const listaMenu = obtenerEl('lista-menu');
-    const botonMenu = obtenerEl('boton-menu');
-    if (!(listaMenu && botonMenu)) return;
+    if (!listaMenu) return;
 
-    /* abre/cierra el menú en pantallas pequeñas */
-    botonMenu.addEventListener('click', () => {
-      listaMenu.classList.toggle('menu-abierto');
-    });
-
-    /* cierra el menú si se hace click fuera de él */
-    document.addEventListener('click', (evento) => {
-      if (!listaMenu.contains(evento.target) && !botonMenu.contains(evento.target)) {
-        listaMenu.classList.remove('menu-abierto');
-      }
-    });
-
-    /* resalta el enlace de la página actual */
-    const paginaActual = window.location.pathname.split('/').pop();
+    const paginaActual = window.location.pathname.split('/').pop() || 'index.html';
     Array.from(listaMenu.querySelectorAll('a')).forEach((enlace) => {
       const destino = enlace.getAttribute('href');
       if (destino === paginaActual) {
@@ -514,7 +500,7 @@
    * @description Inicia los módulos principales del sitio cuando el DOM está disponible.
    */
   const iniciarSitio = () => {
-    iniciarMenu();
+    marcarEnlaceActivo();
     iniciarRecetas();
     iniciarContacto();
   };

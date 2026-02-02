@@ -16,23 +16,44 @@ import "@styles/Input.scss";
  * @param {boolean} props.required - Si es requerido
  * @param {string} props.className - Clases adicionales
  */
-const Input = ({
-  type = 'text',
-  id,
-  name,
-  label,
-  placeholder,
-  value,
-  onChange,
-  onBlur,
-  error,
-  required = false,
-  className = '',
-  ...props
-}) => {
+const Input = (props) => {
+  const type = props.type || 'text';
+  const id = props.id;
+  const name = props.name;
+  const label = props.label;
+  const placeholder = props.placeholder;
+  const value = props.value;
+  const onChange = props.onChange;
+  const error = props.error;
+  const required = props.required || false;
+  const className = props.className || '';
+  const onBlur = props.onBlur;
+
   const [focused, setFocused] = useState(false);
-  const hasError = !!error;
-  const inputClasses = `input ${hasError ? 'campo-error' : ''} ${focused ? 'input--focused' : ''} ${className}`.trim();
+
+  let hasError = false;
+  if (error) {
+    hasError = true;
+  }
+
+  let inputClasses = 'input';
+
+  if (hasError) {
+    inputClasses = inputClasses + ' campo-error';
+  }
+
+  if (focused) {
+    inputClasses = inputClasses + ' input--focused';
+  }
+
+  if (className) {
+    inputClasses = inputClasses + ' ' + className;
+  }
+
+  let ariaDescribedBy;
+  if (hasError) {
+    ariaDescribedBy = `error-${id}`;
+  }
 
   return (
     <div className="fila-formulario">
@@ -41,6 +62,7 @@ const Input = ({
           {label}
         </label>
       )}
+
       <input
         type={type}
         id={id}
@@ -48,16 +70,19 @@ const Input = ({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        onFocus={() => setFocused(true)}
         onBlur={(e) => {
           setFocused(false);
-          if (onBlur) onBlur(e);
+          if (onBlur) {
+            onBlur(e);
+          }
         }}
-        onFocus={() => setFocused(true)}
         required={required}
         className={inputClasses}
-        aria-describedby={hasError ? `error-${id}` : undefined}
+        aria-describedby={ariaDescribedBy}
         {...props}
       />
+
       {hasError && (
         <p
           id={`error-${id}`}
@@ -72,4 +97,3 @@ const Input = ({
 };
 
 export default Input;
-

@@ -37,37 +37,24 @@ const Recipes = () => {
     cargarRecetas();
   }, []);
 
-  // Lógica unificada para obtener una receta (API primero, luego memoria local)
-  const cargarYSetearReceta = async (id, setStates = true) => {
-    try {
-      if (setStates) setLoading(true);
-      const receta = await getRecipeById(id);
+  const cargarYSetearReceta = async (id) => {
+    setLoading(true);
+    setError(null);
 
-      if (receta) {
-        setRecetaDetalle(receta);
-      } else {
-        // Fallback a memoria local
-        const recetaEncontrada = recetas.find(r => r.id === id);
-        if (recetaEncontrada) {
-          setRecetaDetalle(recetaEncontrada);
-        } else {
-          setRecetaDetalle(null);
-          if (setStates) setError('Receta no encontrada');
-        }
-      }
-    } catch (err) {
-      console.error('Error al cargar receta:', err);
-      // Fallback a memoria local en caso de error de API
-      const recetaEncontrada = recetas.find(r => r.id === id);
-      if (recetaEncontrada) {
-        setRecetaDetalle(recetaEncontrada);
-      } else {
-        setRecetaDetalle(null);
-        if (setStates) setError('No se pudo cargar la receta. Verificá que json-server esté corriendo.');
-      }
-    } finally {
-      if (setStates) setLoading(false);
+    const recetaApi = await getRecipeById(id);
+
+    if (recetaApi) {
+      setRecetaDetalle(recetaApi);
+      setLoading(false);
+      return;
     }
+
+    else {
+      setRecetaDetalle(null);
+      setError('Receta no encontrada');
+    }
+
+    setLoading(false);
   };
 
   // Cargar receta detalle desde la API cuando cambia el ID en la URL

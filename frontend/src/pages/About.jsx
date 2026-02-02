@@ -15,27 +15,64 @@ const About = () => {
   const [errors, setErrors] = useState({});
 
   const validateName = (value) => {
-    const pattern = /^[A-Za-zÁÉÍÓÚáéíóúÑñ]+(?:\s+[A-Za-zÁÉÍÓÚáéíóúÑñ]+)*$/;
-    if (!value.trim()) return 'Ingresá tu nombre.';
-    if (!pattern.test(value.trim().replace(/\s+/g, ' '))) {
-      return 'Ingresá solo letras y espacios.';
+    const texto = value.trim();
+
+    if (texto === '') {
+      return 'Ingresá tu nombre.';
     }
+
+    for (let i = 0; i < texto.length; i++) {
+      const caracter = texto[i];
+
+      const esLetra =
+        (caracter >= 'a' && caracter <= 'z') ||
+        (caracter >= 'A' && caracter <= 'Z') ||
+        caracter === ' ';
+
+      if (!esLetra) {
+        return 'Ingresá solo letras y espacios.';
+      }
+    }
+
     return '';
   };
 
   const validateEmail = (value) => {
-    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!value.trim()) return 'Ingresá tu correo electrónico.';
-    if (!pattern.test(value.trim())) {
+    const texto = value.trim();
+
+    if (texto === '') {
+      return 'Ingresá tu correo electrónico.';
+    }
+
+    if (!texto.includes('@')) {
       return 'Ingresá un correo válido.';
     }
+
+    const partes = texto.split('@');
+
+    if (partes.length !== 2) {
+      return 'Ingresá un correo válido.';
+    }
+
+    const usuario = partes[0];
+    const dominio = partes[1];
+
+    if (usuario === '' || dominio === '') {
+      return 'Ingresá un correo válido.';
+    }
+
+    if (!dominio.includes('.')) {
+      return 'Ingresá un correo válido.';
+    }
+
     return '';
   };
 
   const handleChange = (field, value) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
+
     if (errors[field]) {
-      setErrors(prev => ({ ...prev, [field]: '' }));
+      setErrors((prev) => ({ ...prev, [field]: '' }));
     }
   };
 
@@ -48,37 +85,56 @@ const About = () => {
 
     if (nombreError) {
       newErrors.nombre = nombreError;
-      setFormData(prev => ({ ...prev, nombre: '' }));
+      setFormData((prev) => ({ ...prev, nombre: '' }));
     }
+
     if (correoError) {
       newErrors.correo = correoError;
-      setFormData(prev => ({ ...prev, correo: '' }));
+      setFormData((prev) => ({ ...prev, correo: '' }));
     }
+
     if (!formData.motivo) {
       newErrors.motivo = 'Seleccioná un motivo.';
-      setFormData(prev => ({ ...prev, motivo: '' }));
+      setFormData((prev) => ({ ...prev, motivo: '' }));
     }
+
     if (!formData.mensaje.trim()) {
       newErrors.mensaje = 'Ingresá tu mensaje.';
     } else if (formData.mensaje.trim().length < 10) {
-      newErrors.mensaje = 'Contanos un poco más en el mensaje (mínimo 10 caracteres).';
+      newErrors.mensaje =
+        'Contanos un poco más en el mensaje (mínimo 10 caracteres).';
     }
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
+
       const firstErrorField = Object.keys(newErrors)[0];
-      document.getElementById(`${firstErrorField}-contacto`)?.focus();
+      const element = document.getElementById(`${firstErrorField}-contacto`);
+
+      if (element) {
+        element.focus();
+      }
+
       return;
     }
 
-    // Mensaje de éxito y redirigir a home
     alert('Mensaje enviado con éxito.');
     navigate('/');
   };
 
+  // Reemplazos sin ternario para className y aria-describedby
+  const motivoClassName = (errors.motivo && 'campo-error') || '';
+  const motivoAria = (errors.motivo && 'error-motivo-contacto') || undefined;
+
+  const mensajeClassName = (errors.mensaje && 'campo-error') || '';
+  const mensajeAria = (errors.mensaje && 'error-mensaje-contacto') || undefined;
+
   return (
     <main className="contenedor" id="pagina-nosotros">
-      <section className="presentacion panel-superficie" aria-labelledby="titulo-nosotros">
+      <section
+        className="presentacion panel-superficie"
+        aria-labelledby="titulo-nosotros"
+      >
         <div className="presentacion-contenido">
           <div className="etiqueta-portada">
             <img src="/logo.png" alt="emblema nutrifit+" />
@@ -104,14 +160,14 @@ const About = () => {
           </p>
         </div>
         <figure className="presentacion-imagen">
-          <img
-            src="/logo-ladotexto.png"
-            alt="logotipo oficial de nutrifit+"
-          />
+          <img src="/logo-ladotexto.png" alt="logotipo oficial de nutrifit+" />
         </figure>
       </section>
 
-      <div className="destacado-nosotros panel-superficie" aria-label="resumen de la misión de nutrifit+">
+      <div
+        className="destacado-nosotros panel-superficie"
+        aria-label="resumen de la misión de nutrifit+"
+      >
         <h2>creado por estudiantes para acompañarte</h2>
         <ul>
           <li>herramientas simples que transforman información en acción.</li>
@@ -120,7 +176,10 @@ const About = () => {
         </ul>
       </div>
 
-      <section className="seccion-enfoque panel-superficie" aria-labelledby="titulo-enfoque">
+      <section
+        className="seccion-enfoque panel-superficie"
+        aria-labelledby="titulo-enfoque"
+      >
         <h2 id="titulo-enfoque">nuestro enfoque</h2>
         <p>
           en nutrifit+ creemos que el bienestar se construye día a día, con
@@ -137,14 +196,22 @@ const About = () => {
         </p>
       </section>
 
-      <section className="seccion-contacto panel-superficie" aria-labelledby="titulo-contacto">
+      <section
+        className="seccion-contacto panel-superficie"
+        aria-labelledby="titulo-contacto"
+      >
         <h2 id="titulo-contacto">escribinos</h2>
         <p>
           ¿querés contarnos tu experiencia, proponer una idea o consultar sobre
-          nuevos contenidos? dejanos tu mensaje y te responderemos a la
-          brevedad.
+          nuevos contenidos? dejanos tu mensaje y te responderemos a la brevedad.
         </p>
-        <form className="formulario-contacto" id="formulario-contacto" onSubmit={handleSubmit} noValidate>
+
+        <form
+          className="formulario-contacto"
+          id="formulario-contacto"
+          onSubmit={handleSubmit}
+          noValidate
+        >
           <Input
             id="nombre-contacto"
             name="nombre-contacto"
@@ -159,6 +226,7 @@ const About = () => {
             inputMode="text"
             autoComplete="name"
           />
+
           <Input
             id="correo-contacto"
             name="correo-contacto"
@@ -172,6 +240,7 @@ const About = () => {
             inputMode="email"
             autoComplete="email"
           />
+
           <div className="fila-formulario">
             <label htmlFor="motivo-contacto">motivo</label>
             <select
@@ -179,8 +248,8 @@ const About = () => {
               name="motivo-contacto"
               value={formData.motivo}
               onChange={(e) => handleChange('motivo', e.target.value)}
-              className={errors.motivo ? 'campo-error' : ''}
-              aria-describedby={errors.motivo ? 'error-motivo-contacto' : undefined}
+              className={motivoClassName}
+              aria-describedby={motivoAria}
               required
             >
               <option value="">seleccionar</option>
@@ -188,12 +257,18 @@ const About = () => {
               <option value="capacitaciones">capacitaciones nutrifit+</option>
               <option value="alianzas">alianzas y prensa</option>
             </select>
+
             {errors.motivo && (
-              <p id="error-motivo-contacto" className="mensaje-error" aria-live="polite">
+              <p
+                id="error-motivo-contacto"
+                className="mensaje-error"
+                aria-live="polite"
+              >
                 {errors.motivo}
               </p>
             )}
           </div>
+
           <div className="fila-formulario">
             <label htmlFor="mensaje-contacto">mensaje</label>
             <textarea
@@ -204,16 +279,22 @@ const About = () => {
               placeholder="contanos cómo podemos ayudarte"
               value={formData.mensaje}
               onChange={(e) => handleChange('mensaje', e.target.value)}
-              className={errors.mensaje ? 'campo-error' : ''}
-              aria-describedby={errors.mensaje ? 'error-mensaje-contacto' : undefined}
+              className={mensajeClassName}
+              aria-describedby={mensajeAria}
               required
             />
+
             {errors.mensaje && (
-              <p id="error-mensaje-contacto" className="mensaje-error" aria-live="polite">
+              <p
+                id="error-mensaje-contacto"
+                className="mensaje-error"
+                aria-live="polite"
+              >
                 {errors.mensaje}
               </p>
             )}
           </div>
+
           <Button type="submit" variant="primary">
             enviar mensaje
           </Button>

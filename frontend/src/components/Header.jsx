@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "@styles/Header.scss";
 
@@ -7,62 +6,62 @@ import logo from '../assets/logo.png';
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [menuOpen, setMenuOpen] = useState(false);
 
-  const isActive = (path) => {
-    if (path === '/') return location.pathname === '/home';
-    return location.pathname === path;
-  };
-
-
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [location.pathname]);
-
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (menuOpen && !e.target.closest('.navegacion')) {
-        setMenuOpen(false);
+  const getActiveClass = (path) => {
+    if (path === '/') {
+      if (location.pathname === '/' || location.pathname === '/home') {
+        return 'estado-activo';
+      } else {
+        return '';
       }
-    };
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
-  }, [menuOpen]);
+    }
+
+    if (location.pathname === path) {
+      return 'estado-activo';
+    } else {
+      return '';
+    }
+  };
 
   return (
     <header className="encabezado">
       <div className="marca">
-        <a className="enlace-marca" href="/" onClick={(e) => { e.preventDefault(); navigate('/'); }}>
+        <a
+          className="enlace-marca"
+          href="/"
+          onClick={(e) => {
+            e.preventDefault();
+            navigate('/');
+          }}
+        >
           <img src={logo} alt="Nutrifit+ logo" className="logo-marca" />
           <span className="texto-marca">nutrifit+</span>
         </a>
       </div>
+
       <nav className="navegacion" aria-label="principal">
-        <button
-          className="boton-menu"
-          id="boton-menu"
-          aria-label="abrir menú"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <ul className={`lista-menu ${menuOpen ? 'menu-abierto' : ''}`} id="lista-menu">
+        <ul className="lista-menu" id="lista-menu">
           <li>
             <a
               href="/"
-              onClick={(e) => { e.preventDefault(); navigate('/'); }}
-              className={isActive('/') ? 'estado-activo' : ''}
+              onClick={(e) => {
+                e.preventDefault();
+                navigate('/');
+              }}
+              className={getActiveClass('/')}
             >
               inicio
             </a>
           </li>
+
           <li>
             <a
               href="/calculadoras"
-              onClick={(e) => { e.preventDefault(); navigate('/calculadoras'); }}
-              className={isActive('/calculadoras') ? 'estado-activo' : ''}
+              onClick={(e) => {
+                e.preventDefault();
+                navigate('/calculadoras');
+              }}
+              className={getActiveClass('/calculadoras')}
             >
               calculadoras
             </a>
@@ -71,17 +70,24 @@ const Header = () => {
           <li>
             <a
               href="/recetas"
-              onClick={(e) => { e.preventDefault(); navigate('/recetas'); }}
-              className={isActive('/recetas') ? 'estado-activo' : ''}
+              onClick={(e) => {
+                e.preventDefault();
+                navigate('/recetas');
+              }}
+              className={getActiveClass('/recetas')}
             >
               recetas
             </a>
           </li>
+
           <li>
             <a
               href="/nosotros"
-              onClick={(e) => { e.preventDefault(); navigate('/nosotros'); }}
-              className={isActive('/nosotros') ? 'estado-activo' : ''}
+              onClick={(e) => {
+                e.preventDefault();
+                navigate('/nosotros');
+              }}
+              className={getActiveClass('/nosotros')}
             >
               nosotros
             </a>
@@ -90,6 +96,7 @@ const Header = () => {
       </nav>
     </header>
   );
+
 };
 
 export default Header;
