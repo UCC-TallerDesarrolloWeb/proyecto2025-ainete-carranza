@@ -3,6 +3,10 @@ import Input from "@components/Input";
 import Button from "@components/Button";
 import "@styles/Calculators.scss";
 
+/** @component Calculators
+ * @description Página que agrupa herramientas para calcular IMC, hidratación y calorías.
+ * Utiliza validaciones específicas para cada tipo de dato.
+ */
 const Calculators = () => {
   // IMC State
   const [imcData, setImcData] = useState({ peso: '', altura: '', edad: '' });
@@ -18,7 +22,13 @@ const Calculators = () => {
   const [caloriasData, setCaloriasData] = useState({ sexo: '', actividad: '', peso: '', altura: '', edad: '' });
   const [caloriasErrors, setCaloriasErrors] = useState({ sexo: '', actividad: '', peso: '', altura: '', edad: '' });
   const [caloriasResult, setCaloriasResult] = useState('');
+
   // Validación de edad (0-120, entero positivo)
+  /** @function validateAge
+   * @param {string} value Edad ingresada.
+   * @returns {object} Objeto con { valid: boolean, error?: string, value?: number }.
+   * @description Valida que la edad sea un número entero entre 1 y 120.
+   */
   const validateAge = (value) => {
     const trimmed = value.trim();
 
@@ -27,7 +37,6 @@ const Calculators = () => {
     }
 
     const num = Number(trimmed);
-
     if (isNaN(num)) {
       return { valid: false, error: 'La edad debe ser un número.' };
     }
@@ -39,6 +48,11 @@ const Calculators = () => {
     return { valid: true, value: num };
   };
 
+  /** @function validateWeight
+   * @param {string} value Peso ingresado.
+   * @returns {object} Objeto con { valid: boolean, error?: string, value?: number }.
+   * @description Valida que el peso sea un número positivo razonable (hasta 999kg).
+   */
   const validateWeight = (value) => {
     const trimmed = value.trim().replace(',', '.');
 
@@ -60,6 +74,11 @@ const Calculators = () => {
   };
 
 
+  /** @function validateHeight
+   * @param {string} value Altura ingresada.
+   * @returns {object} Objeto con { valid: boolean, error?: string, value?: number }.
+   * @description Valida que la altura sea un número positivo menor a 3 metros.
+   */
   const validateHeight = (value) => {
     const trimmed = value.trim().replace(',', '.');
 
@@ -80,6 +99,11 @@ const Calculators = () => {
     return { valid: true, value: num };
   };
 
+  /** @function handleImcChange
+   * @param {string} field Nombre del campo.
+   * @param {string} value Nuevo valor.
+   * @description Actualiza el estado del formulario IMC y limpia errores.
+   */
   const handleImcChange = (field, value) => {
     setImcData(prev => ({ ...prev, [field]: value }));
     if (imcErrors[field]) {
@@ -87,6 +111,11 @@ const Calculators = () => {
     }
   };
 
+  /** @function handleAguaChange
+   * @param {string} field Nombre del campo.
+   * @param {string} value Nuevo valor.
+   * @description Actualiza el estado del formulario Agua y limpia errores.
+   */
   const handleAguaChange = (field, value) => {
     setAguaData(prev => ({ ...prev, [field]: value }));
     if (aguaErrors[field]) {
@@ -94,6 +123,11 @@ const Calculators = () => {
     }
   };
 
+  /** @function handleCaloriasChange
+   * @param {string} field Nombre del campo.
+   * @param {string} value Nuevo valor.
+   * @description Actualiza el estado del formulario Calorías y limpia errores.
+   */
   const handleCaloriasChange = (field, value) => {
     setCaloriasData(prev => ({ ...prev, [field]: value }));
     if (caloriasErrors[field]) {
@@ -101,6 +135,9 @@ const Calculators = () => {
     }
   };
 
+  /** @function calcularImc
+   * @description Realiza el cálculo del Índice de Masa Corporal y determina la categoría.
+   */
   const calcularImc = () => {
     const pesoValidation = validateWeight(imcData.peso);
     const alturaValidation = validateHeight(imcData.altura);
@@ -122,10 +159,6 @@ const Calculators = () => {
 
     if (Object.keys(errors).length > 0) {
       setImcErrors(errors);
-
-      const firstErrorField = Object.keys(errors)[0];
-      const errorElement = document.getElementById(`${firstErrorField}-imc`);
-      if (errorElement) errorElement.focus();
       return;
     }
 
@@ -143,13 +176,15 @@ const Calculators = () => {
     setImcResult(`Tu IMC es ${imcRounded} (${categoria}).`);
   };
 
+  /** @function calcularAgua
+   * @description Calcula la ingesta de agua diaria recomendada según el peso.
+   */
   const calcularAgua = () => {
     const pesoValidation = validateWeight(aguaData.peso);
 
     if (!pesoValidation.valid) {
       setAguaErrors({ peso: pesoValidation.error });
       setAguaData(prev => ({ ...prev, peso: '' }));
-      document.getElementById('peso-agua')?.focus();
       return;
     }
 
@@ -159,6 +194,9 @@ const Calculators = () => {
     setAguaResult(`Tu hidratación sugerida es ${litrosRounded} litros.`);
   };
 
+  /** @function calcularCalorias
+   * @description Estima el gasto calórico diario usando la fórmula de Harris-Benedict.
+   */
   const calcularCalorias = () => {
     const errors = {};
 
@@ -191,8 +229,6 @@ const Calculators = () => {
 
     if (Object.keys(errors).length > 0) {
       setCaloriasErrors(errors);
-      const firstErrorField = Object.keys(errors)[0];
-      document.getElementById(`${firstErrorField}-calorias`)?.focus();
       return;
     }
 

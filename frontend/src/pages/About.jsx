@@ -14,6 +14,11 @@ const About = () => {
   });
   const [errors, setErrors] = useState({});
 
+  /** @function validateName
+   * @param {string} value Nombre ingresado.
+   * @returns {string} Mensaje de error o cadena vacía si es válido.
+   * @description Valida que el nombre no esté vacío y contenga solo letras.
+   */
   const validateName = (value) => {
     const texto = value.trim();
 
@@ -37,6 +42,11 @@ const About = () => {
     return '';
   };
 
+  /** @function validateEmail
+   * @param {string} value Correo ingresado.
+   * @returns {string} Mensaje de error o cadena vacía si es válido.
+   * @description Valida el formato básico de un correo electrónico.
+   */
   const validateEmail = (value) => {
     const texto = value.trim();
 
@@ -68,6 +78,12 @@ const About = () => {
     return '';
   };
 
+  /** @function handleChange
+   * @param {string} field Nombre del campo a actualizar.
+   * @param {string} value Nuevo valor del campo.
+   * @returns {void}
+   * @description Actualiza el estado del formulario y limpia errores específicos.
+   */
   const handleChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
 
@@ -76,6 +92,11 @@ const About = () => {
     }
   };
 
+  /** @function handleSubmit
+   * @param {Event} e Evento de submit del formulario.
+   * @returns {void}
+   * @description Maneja el envío del formulario, valida todos los campos y muestra errores o éxito.
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -107,7 +128,7 @@ const About = () => {
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
-
+      //lleva al primer error
       const firstErrorField = Object.keys(newErrors)[0];
       const element = document.getElementById(`${firstErrorField}-contacto`);
 
@@ -122,7 +143,7 @@ const About = () => {
     navigate('/');
   };
 
-  // Reemplazos sin ternario para className y aria-describedby
+  // si hay errores agrega esa clase 
   const motivoClassName = (errors.motivo && 'campo-error') || '';
   const motivoAria = (errors.motivo && 'error-motivo-contacto') || undefined;
 

@@ -281,18 +281,7 @@
     return campo.value;
   };
 
-  /** @function mostrarError
-   * @param {string} texto mensaje descriptivo del error
-   * @param {string} [idCampoAFocar] identificador del campo afectado
-   * @returns {void}
-   * @description Muestra un error general o enfoca el campo problemático aplicando el mensaje correspondiente.
-   */
-  const mostrarError = (texto, idCampoAFocar) => {
-    if (idCampoAFocar) {
-      aplicarErrorCampo(idCampoAFocar, texto);
-      return;
-    }
-  };
+
 
   /* registra listeners para limpiar errores al corregir */
   [
@@ -323,7 +312,6 @@
 
     const imc = calcularImcInterno(peso, alturaCentimetros);
     if (!esValorPositivo(imc)) {
-      mostrarError("no se pudo calcular el imc. verificá los datos.");
       return;
     }
 

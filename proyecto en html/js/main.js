@@ -7,17 +7,6 @@
     * @description Obtiene un elemento del DOM a partir de su atributo id.
     */
   const obtenerEl = (id) => document.getElementById(id);
-
-  /** @function esNumeroPositivo
-   * @param {unknown} valor dato a evaluar
-   * @returns {boolean}
-   * @description Indica si el valor recibido es un número finito mayor a cero.
-   */
-  const esNumeroPositivo = (valor) => {
-    const numero = Number(valor);
-    return Number.isFinite(numero) && numero > 0;
-  };
-
   /** @function obtenerMensajeError
    * @param {HTMLElement|null} campo elemento desde el cual buscar el mensaje
    * @returns {HTMLElement|null}
@@ -64,29 +53,6 @@
     campo.focus();
   };
 
-  /** @function adjuntarResetCampo
-   * @param {HTMLElement|null} campo elemento que restablece su estado al modificarse
-   * @returns {void}
-   * @description Registra los eventos necesarios para limpiar el error cuando el usuario modifica el campo.
-   */
-  const adjuntarResetCampo = (campo) => {
-    if (!campo) return;
-
-    campo.addEventListener('change', () => {
-      limpiarEstadoCampo(campo);
-    });
-  };
-
-  /* validación: solo letras y espacios (incluyendo tildes/ñ) */
-  const patronNombreContacto =
-    /^[A-Za-zÁÉÍÓÚáéíóúÑñ]+(?:\s+[A-Za-zÁÉÍÓÚáéíóúÑñ]+)*$/;
-  /** @function esNombreValido
-   * @param {string} valor texto a validar
-   * @returns {boolean}
-   * @description Evalúa si el nombre solo contiene letras y espacios simples.
-   */
-  const esNombreValido = (valor) => patronNombreContacto.test(valor);
-
   /** @function marcarEnlaceActivo
    * @returns {void}
    * @description Resalta el enlace del menú que corresponde a la página actual.
@@ -125,7 +91,7 @@
     const contenedorDetalle = obtenerEl('detalle-receta');
     const contenedorListado = paginaRecetas.querySelector('.rejilla-recetas');
 
-    let filtroActivo = 'todas';
+    let filtroActivo = localStorage.getItem('filtroRecetas') || 'todas';
     let terminoBusqueda = '';
 
     const datosRecetas = {
@@ -366,12 +332,11 @@
       if (barraRecetas) barraRecetas.classList.add('estado-oculto');
     };
     /** @function obtenerIdRecetaDesdeUrl
-     * @returns {string|null}
-     * @description Obtiene el identificador de una receta leyendo la URL.
-     * Primero lo busca en los parámetros (?id=...), y si no existe,
-     * lo obtiene desde el hash (#...). Devuelve null si no se encuentra.
-     */
-
+    * @returns {string|null}
+    * @description Obtiene el identificador de una receta leyendo la URL.
+    * Lo busca únicamente en los parámetros Query (?id=...).
+    * Devuelve null si no se encuentra.
+    */
     const obtenerIdRecetaDesdeUrl = () => {
       let id = null;
 
@@ -427,8 +392,17 @@
         botonesFiltro.forEach((otroBoton) => otroBoton.classList.remove('estado-activo'));
         boton.classList.add('estado-activo');
         filtroActivo = boton.getAttribute('data-filtro') || 'todas';
+        localStorage.setItem('filtroRecetas', filtroActivo);
         aplicarFiltros();
       });
+    });
+
+    /* restaurar estado visual del botón activo al cargar */
+    botonesFiltro.forEach((boton) => {
+      boton.classList.remove('estado-activo');
+      if (boton.getAttribute('data-filtro') === filtroActivo) {
+        boton.classList.add('estado-activo');
+      }
     });
 
     /* input de búsqueda en vivo */

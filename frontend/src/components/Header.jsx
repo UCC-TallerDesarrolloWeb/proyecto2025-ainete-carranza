@@ -3,10 +3,19 @@ import "@styles/Header.scss";
 
 import logo from '../assets/logo.png';
 
+/** @component Header
+ * @description Componente de encabezado principal con navegación y logo.
+ * @returns {JSX.Element} Elemento header con nav y logo.
+ */
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  /** @function getActiveClass
+   * @param {string} path Ruta a comparar con la actual.
+   * @returns {string} Clase CSS 'estado-activo' si coincide, o cadena vacía.
+   * @description Determina si el enlace actual corresponde a la ruta activa.
+   */
   const getActiveClass = (path) => {
     if (path === '/') {
       if (location.pathname === '/' || location.pathname === '/home') {

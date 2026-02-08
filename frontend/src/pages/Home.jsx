@@ -3,6 +3,10 @@ import Button from "@components/Button";
 import Card from "@components/Card";
 import "@styles/Home.scss";
 
+/** @component Home
+ * @description Página de inicio (Landing Page) de la aplicación.
+ * Presenta la propuesta de valor y accesos directos a las funciones principales.
+ */
 const Home = () => {
   const navigate = useNavigate();
 

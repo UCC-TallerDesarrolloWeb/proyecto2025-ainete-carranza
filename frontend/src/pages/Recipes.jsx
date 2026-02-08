@@ -5,16 +5,25 @@ import Card from "@components/Card";
 import { getRecipes, getRecipeById } from "@api/recipesApi";
 import "@styles/Recipes.scss";
 
+/** @component Recipes
+ * @description Componente principal para visualizar y filtrar recetas.
+ * Maneja el estado de carga, errores, filtrado y detalle de receta.
+ * Persiste el filtro seleccionado en localStorage.
+ */
 const Recipes = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [filtroActivo, setFiltroActivo] = useState('todas');
+
+  const [filtroActivo, setFiltroActivo] = useState(() => localStorage.getItem('filtroRecetas') || 'todas');
+
   const [terminoBusqueda, setTerminoBusqueda] = useState('');
   const [recetaDetalle, setRecetaDetalle] = useState(null);
   const [recetas, setRecetas] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Cargar recetas desde la API al montar el componente
+  /** @effect
+   * @description Carga las recetas desde la API al montar el componente.
+   */
   useEffect(() => {
     const cargarRecetas = async () => {
       setLoading(true);
@@ -37,6 +46,11 @@ const Recipes = () => {
     cargarRecetas();
   }, []);
 
+  /** @function cargarYSetearReceta
+   * @param {string} id Identificador de la receta a cargar.
+   * @returns {Promise<void>}
+   * @description Busca una receta por ID en la API y actualiza el estado.
+   */
   const cargarYSetearReceta = async (id) => {
     setLoading(true);
     setError(null);
@@ -57,32 +71,58 @@ const Recipes = () => {
     setLoading(false);
   };
 
-  // Cargar receta detalle desde la API cuando cambia el ID en la URL
+  /** @effect
+   * @description Sincroniza el detalle de la receta con el parámetro URL 'id'.
+   */
   useEffect(() => {
     const id = searchParams.get('id');
     if (id) {
-      cargarYSetearReceta(id, true);
+      cargarYSetearReceta(id);
     } else {
       setRecetaDetalle(null);
     }
   }, [searchParams, recetas]); // Nota: quitamos la dependencia circular implícita al extraer la lógica
 
+  /** @function normalizarTexto
+   * @param {string} texto Texto a normalizar.
+   * @returns {string} Texto en minúsculas y sin acentos.
+   * @description Normaliza una cadena para facilitar la búsqueda y comparación.
+   */
   const normalizarTexto = (texto) => {
     return (texto || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
   };
 
+  /** @constant {Array} recetasFiltradas
+   * @description Lista de recetas que cumplen con los criterios de filtro y búsqueda.
+   */
   const recetasFiltradas = recetas.filter(receta => {
-    const coincideFiltro = filtroActivo === 'todas' || receta.categorias.includes(filtroActivo);
+    const coincideFiltro = filtroActivo === 'todas' || (receta.categorias && receta.categorias.includes(filtroActivo));
     const coincideBusqueda = terminoBusqueda === '' || normalizarTexto(receta.titulo).includes(normalizarTexto(terminoBusqueda));
     return coincideFiltro && coincideBusqueda;
   });
 
+  /** @effect
+   * @description Guarda el filtro activo en localStorage cada vez que cambia.
+   */
+  useEffect(() => {
+    localStorage.setItem('filtroRecetas', filtroActivo);
+  }, [filtroActivo]);
+
+  /** @function mostrarDetalle
+   * @param {string} id Identificador de la receta.
+   * @returns {Promise<void>}
+   * @description Actualiza la URL con el ID de la receta para mostrar su detalle.
+   */
   const mostrarDetalle = async (id) => {
     setSearchParams({ id });
     // Reusamos la lógica común sin alterar el estado de loading/error global
-    await cargarYSetearReceta(id, false);
+    await cargarYSetearReceta(id);
   };
 
+  /** @function ocultarDetalle
+   * @returns {void}
+   * @description Limpia el parámetro ID de la URL y el estado de detalle.
+   */
   const ocultarDetalle = () => {
     setSearchParams({});
     setRecetaDetalle(null);

@@ -1,20 +1,20 @@
 import { useState } from "react";
 import "@styles/Input.scss";
 
-/**
- * Componente Input reutilizable con validación
- * @param {Object} props
- * @param {string} props.type - Tipo de input
- * @param {string} props.id - ID del input
- * @param {string} props.name - Nombre del input
- * @param {string} props.label - Etiqueta del input
- * @param {string} props.placeholder - Placeholder
- * @param {string} props.value - Valor del input
- * @param {function} props.onChange - Función onChange
- * @param {function} props.onBlur - Función onBlur
- * @param {string} props.error - Mensaje de error
- * @param {boolean} props.required - Si es requerido
- * @param {string} props.className - Clases adicionales
+/** @component Input
+ * @param {Object} props Propiedades del componente
+ * @param {string} props.id Identificador único del campo
+ * @param {string} props.name Nombre del campo para formularios
+ * @param {string} [props.type='text'] Tipo de input HTML
+ * @param {string} [props.label] Texto de la etiqueta asociada
+ * @param {string} [props.placeholder] Texto de ayuda visual
+ * @param {string|number} props.value Valor actual del campo
+ * @param {function} props.onChange Manejador de cambios
+ * @param {string} [props.error] Mensaje de error a mostrar
+ * @param {boolean} [props.required=false] Indica si el campo es obligatorio
+ * @param {string} [props.className] Clases CSS adicionales
+ * @returns {JSX.Element} Campo de entrada con etiqueta y manejo de errores
+ * @description Componente de input controlado con soporte para estados de error y foco.
  */
 const Input = (props) => {
   const type = props.type || 'text';

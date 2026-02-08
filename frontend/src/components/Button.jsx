@@ -1,13 +1,14 @@
 import "@styles/Button.scss";
 
-/**
- * Componente Button reutilizable
- * @param {Object} props
- * @param {string} props.variant - Variante del botón: 'primary' | 'outline' | 'filter'
- * @param {string} props.type - Tipo de botón: 'button' | 'submit' | 'reset'
- * @param {function} props.onClick - Función a ejecutar al hacer click
- * @param {React.ReactNode} props.children - Contenido del botón
- * @param {string} props.className - Clases adicionales
+/** @component Button
+ * @param {Object} props Propiedades del componente
+ * @param {string} [props.variant='primary'] Estilo visual ('primary', 'outline', 'filter')
+ * @param {string} [props.type='button'] Tipo de botón HTML ('button', 'submit', 'reset')
+ * @param {function} [props.onClick] Manejador del evento click
+ * @param {React.ReactNode} props.children Contenido interno
+ * @param {string} [props.className] Clases CSS adicionales
+ * @returns {JSX.Element} Elemento de botón renderizado
+ * @description Componente de botón reutilizable con variantes de estilo predefinidas.
  */
 const Button = (props) => {
   const variant = props.variant || 'primary';

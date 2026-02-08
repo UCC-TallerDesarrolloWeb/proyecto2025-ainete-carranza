@@ -1,5 +1,9 @@
 import "@styles/Footer.scss";
 
+/** @component Footer
+ * @description Pie de página con información de copyright y enlaces secundarios.
+ * @returns {JSX.Element} Elemento footer renderizado.
+ */
 const Footer = () => {
   return (
     <footer className="pie">
